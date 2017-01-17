@@ -49,4 +49,11 @@ public class Libro {
 	public void setEditorial(String editorial) {
 		this.editorial = editorial;
 	}
+
+	@Override
+	public String toString() {
+		return "Libro [id=" + id + ", autor=" + autor + ", titulo=" + titulo
+				+ ", editorial=" + editorial + "]";
+	}
+	
 }
