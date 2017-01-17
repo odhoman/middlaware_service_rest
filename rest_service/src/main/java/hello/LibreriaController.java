@@ -20,11 +20,13 @@ public class LibreriaController {
         Libro libro = new Libro(1l, "pepe", "las adventuras de pepe", "editorial ani01");
         Libro libro1 = new Libro(2l, "coco", "las adventuras de coco", "editorial ani02");
         Libro libro2 = new Libro(3l, "juan", "las adventuras de juan", "editorial ani03");
+        Libro libro3 = new Libro(4l, "rodolfo", "las adventuras de rodolfo", "editorial ani04");
 
         List<Libro> libros = new ArrayList<Libro>();
         libros.add(libro);
         libros.add(libro1);
         libros.add(libro2);
+        libros.add(libro3);
 
         return new ResponseEntity<List<Libro>>(libros, HttpStatus.OK);
     }
