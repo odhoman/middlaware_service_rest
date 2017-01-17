@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Cotrolador de servicio REST para apliacion educativa
+ */
+
 @RestController
 public class LibreriaController {
     
