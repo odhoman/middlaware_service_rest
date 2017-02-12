@@ -65,57 +65,57 @@ public class RestServiceControllerTestExecutor {
 	}
 
 	
-//	@Test /* PUT */
-//    public void updateLibro() {
-//		System.out.println("Testing PUT update Libro ----------");
-//		System.out.println("URL: "+REST_SERVICE_URI+"/libro/1");
-//		
-//        RestTemplate restTemplate = new RestTemplate();
-//        Libro libro  = new Libro(1L,"Borges","El Aleph","Planeta");
-//        
-//        try {
-//        	restTemplate.put(REST_SERVICE_URI+"/libro/1", libro);
-//		} catch (Exception e) {
-//			System.err.println("Testing PUT update Libro fail --- "+e.getMessage());
-//		}
-//        
-//		System.out.println("Testing PUT update Libro successfull-----------\n");
-//    }
-//	
-//	
-//	@Test /* POST */
-//	public void createLibro() {
-//		System.out.println("Testing POST create Libro ----------");
-//		System.out.println("URL: "+REST_SERVICE_URI+"/libro");
-//		
-//    	RestTemplate restTemplate = new RestTemplate();
-//        Libro libro  = new Libro(1L,"Borges","El Aleph","Planeta");
-//        
-//        try {
-//        	restTemplate.postForLocation(REST_SERVICE_URI+"/libro", libro, Libro.class);
-//		} catch (Exception e) {
-//			System.err.println("Testing POST create Libro fail --- "+e.getMessage());
-//		}
-//        
-//		System.out.println("Testing POST update Libro successfull-----------\n");
-//    }
-//	
-//	@Test /* DELETE */
-//	public void deleteLibro() {
-//		
-//		System.out.println("Testing DELETE delete Libro ----------");
-//		System.out.println("URL: "+REST_SERVICE_URI+"/libro/1");
-//		
-//    	RestTemplate restTemplate = new RestTemplate();
-//        
-//        try {
-//        	restTemplate.delete(REST_SERVICE_URI+"/libro/1");
-//		} catch (Exception e) {
-//			System.err.println("Testing DELETE delete fail --- "+e.getMessage());
-//		}
-//        
-//		System.out.println("Testing DELETE delete successfull-----------\n");
-//		
-//    }
+	@Test /* PUT */
+    public void updateLibro() {
+		System.out.println("Testing PUT update Libro ----------");
+		System.out.println("URL: "+REST_SERVICE_URI+"/libro/1");
+
+        RestTemplate restTemplate = new RestTemplate();
+       Libro libro  = new Libro(1L,"Borges","El Aleph","Planeta");
+
+        try {
+        	restTemplate.put(REST_SERVICE_URI+"/libro/1", libro);
+		} catch (Exception e) {
+			System.err.println("Testing PUT update Libro fail --- "+e.getMessage());
+		}
+
+		System.out.println("Testing PUT update Libro successfull-----------\n");
+    }
+
+
+	@Test /* POST */
+	public void createLibro() {
+		System.out.println("Testing POST create Libro ----------");
+		System.out.println("URL: "+REST_SERVICE_URI+"/libroTest");
+
+    	RestTemplate restTemplate = new RestTemplate();
+        Libro libro  = new Libro(1L,"Borges","El Aleph","Planeta");
+
+        try {
+        	restTemplate.postForLocation(REST_SERVICE_URI+"/libroTest", libro, Libro.class);
+		} catch (Exception e) {
+			System.err.println("Testing POST create Libro fail --- "+e.getMessage());
+		}
+
+		System.out.println("Testing POST update Libro successfull-----------\n");
+    }
+
+	@Test /* DELETE */
+	public void deleteLibro() {
+
+		System.out.println("Testing DELETE delete Libro ----------");
+		System.out.println("URL: "+REST_SERVICE_URI+"/libroTest/1");
+
+    	RestTemplate restTemplate = new RestTemplate();
+
+        try {
+        	restTemplate.delete(REST_SERVICE_URI+"/libroTest/1");
+		} catch (Exception e) {
+			System.err.println("Testing DELETE delete fail --- "+e.getMessage());
+		}
+
+		System.out.println("Testing DELETE delete successfull-----------\n");
+
+    }
 
 }
