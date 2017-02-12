@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.anibal.educational.rest_service.comps.dao.LibroDao;
 import com.anibal.educational.rest_service.domain.Libro;
+import com.anibal.educational.rest_service.domain.LibroFilter;
 import com.anibal.educational.rest_service.domain.Message;
 
 /**
@@ -19,11 +21,48 @@ import com.anibal.educational.rest_service.domain.Message;
  */
 
 @RestController
-public class RestServiceController {
-    
-    @RequestMapping("/listLibros") //GET
+public class RestServiceController extends AbstractRestService {
+	
+	@RequestMapping("/listLibros") //GET
     public ResponseEntity<?> get() {
-
+		
+//		DatabaseConnection db = null;
+//		ResultSet rs = null;
+//		PreparedStatement st = null;
+		try {
+			LibroDao dao = new LibroDao();
+			
+			LibroFilter filtro = new LibroFilter();
+			
+			filtro.setAutor("060651");
+			
+			List<Libro> libros = dao.getItems(filtro);
+			
+			logger.error("Son "+libros.size()+" libros");
+			
+//			db = RestServiceUtil.getDbConnectionMgr().getDatabaseConnection(RestServiceCostant.REST_SERVICE_DB_DATASOURCE_NAME);
+//			db.connect();	
+//			
+//			st = db.prepare("select * from operacion_header");
+//			rs = st.executeQuery();
+//			
+//			int i = 0;
+//			while(rs.next()) {
+//				System.out.println(rs.getString("COMPANIA"));
+//				
+//				if(i>10){
+//					break;
+//				}
+//			}
+    	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error("error al conectar ",e);
+			e.printStackTrace();
+		}
+//		finally{
+//			closeResources(db, st, rs, "");
+//		}
         Libro libro = new Libro(1l, "pepe", "las adventuras de pepe", "editorial ani01");
         Libro libro1 = new Libro(2l, "coco", "las adventuras de coco", "editorial ani02");
         Libro libro2 = new Libro(3l, "juan", "las adventuras de juan", "editorial ani03");
@@ -40,7 +79,7 @@ public class RestServiceController {
     
     @RequestMapping(value = "/libro", method = RequestMethod.POST)
     public ResponseEntity<?> create (@RequestBody Libro libro){
-    	
+
     	System.out.println("Creando libro");
     	
         if(libro.getId() == 0){
