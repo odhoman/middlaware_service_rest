@@ -16,7 +16,7 @@ public class TstWebConfig extends AbstractConfig{
 		setProperty(ConfigConstants.COMMON_DB_USER, "wallander");
 		setProperty(ConfigConstants.COMMON_DB_PASSWORD, "Wallander2016");
 
-		setProperty(ConfigConstants.LOG4J_CONFIG_PATH, "c:\\temp\\log4j-test.properties");
+		setProperty(ConfigConstants.LOG4J_CONFIG_PATH, "log4j.properties");
 		setLogger(getLogger(ConfigConstants.LOG4J_CONFIG_PATH, "test"));
 	}
 

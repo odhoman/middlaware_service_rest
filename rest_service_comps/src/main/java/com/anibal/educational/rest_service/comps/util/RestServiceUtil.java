@@ -16,7 +16,7 @@ public class RestServiceUtil {
 		if (null == dbConnectionMgr) {
 			dbConnectionMgr = new DbConnectionManager(getConfig());
 		}
-		return new DbConnectionManager(getConfig());
+		return dbConnectionMgr;
 	}
 	
 	public static AbstractConfig getConfig() {

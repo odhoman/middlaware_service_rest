@@ -1,6 +1,5 @@
 package com.anibal.educational.rest_service.comps.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.anibal.educational.rest_service.comps.dao.LibroDao;

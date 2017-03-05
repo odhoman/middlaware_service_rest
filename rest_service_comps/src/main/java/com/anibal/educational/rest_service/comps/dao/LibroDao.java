@@ -8,16 +8,13 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.anibal.educational.rest_service.comps.util.RestServiceCostant;
-import com.anibal.educational.rest_service.comps.util.RestServiceUtil;
 import com.anibal.educational.rest_service.domain.Libro;
 import com.anibal.educational.rest_service.domain.LibroFilter;
 import com.odhoman.api.utilities.config.AbstractConfig;
-import com.odhoman.api.utilities.dao.AbstractAbmDAO;
 import com.odhoman.api.utilities.db.DatabaseConnection;
 
 @Component
-public class LibroDao extends AbstractAbmDAO<Libro, LibroFilter>{
+public class LibroDao extends RestServiceAbstractAbmDAO<Libro, LibroFilter>{
 	
 	public LibroDao() {
 		super();
@@ -25,13 +22,9 @@ public class LibroDao extends AbstractAbmDAO<Libro, LibroFilter>{
 
 	public LibroDao(AbstractConfig config) {
 		super(config);
-		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	protected DatabaseConnection getDatabaseConnection() {
-		return RestServiceUtil.getDbConnectionMgr().getDatabaseConnection(RestServiceCostant.REST_SERVICE_DB_DATASOURCE_NAME);
-	}
+
 
 	@Override
 	protected String getMainTableName() {
