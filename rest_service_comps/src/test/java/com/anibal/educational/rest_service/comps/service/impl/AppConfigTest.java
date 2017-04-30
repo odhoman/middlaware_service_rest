@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 import com.anibal.educational.rest_service.comps.dao.CabeceraGastoDao;
 import com.anibal.educational.rest_service.comps.dao.DetalleGastoDao;
+import com.anibal.educational.rest_service.comps.dao.TicketHeaderDao;
+import com.anibal.educational.rest_service.comps.dao.TicketLineDao;
+import com.anibal.educational.rest_service.comps.dao.TicketUserDao;
 import com.anibal.educational.rest_service.comps.service.CabeceraGastoService;
 import com.anibal.educational.rest_service.comps.service.DetalleGastoService;
 import com.odhoman.api.utilities.config.AbstractConfig;
@@ -33,6 +36,21 @@ public class AppConfigTest {
 	@Bean
 	public DetalleGastoDao getDetalleGastoDao(){
 		return new DetalleGastoDaoTestImpl(getAbstractConfig());
+	}
+	
+	@Bean
+	public TicketUserDao getUserDao(){
+		return new UserDaoTestImpl(getAbstractConfig());
+	}
+	
+	@Bean
+	public TicketHeaderDao getTicketHeaderDao(){
+		return new TicketHeaderDaoTestImp(getAbstractConfig());
+	}
+	
+	@Bean
+	public TicketLineDao getTicketLineDao(){
+		return new TicketLineDaoImpl(getAbstractConfig());
 	}
 	
 	@Bean
@@ -89,6 +107,75 @@ public class AppConfigTest {
 			return dbc;
 		}
 	}
+	
+	public class UserDaoTestImpl extends TicketUserDao{
+		
+		public UserDaoTestImpl() {
+			super();
+		}
+
+		public UserDaoTestImpl(AbstractConfig config) {
+			super(config);
+		}
+		
+		@Override
+		protected DatabaseConnection getDatabaseConnection() {
+			DatabaseConnection dbc = new DatabaseConnection();
+			try {
+				dbc.setConfigure(new TstConfig());
+			} catch (Exception e) {
+				throw new ApplicationErrorException("No se pudo configurar el DBC de prueba");
+			}
+			return dbc;
+		}
+		
+	}
+	
+	public class TicketHeaderDaoTestImp extends TicketHeaderDao{
+		
+		public TicketHeaderDaoTestImp() {
+			super();
+		}
+
+		public TicketHeaderDaoTestImp(AbstractConfig config) {
+			super(config);
+		}
+		
+		@Override
+		protected DatabaseConnection getDatabaseConnection() {
+			DatabaseConnection dbc = new DatabaseConnection();
+			try {
+				dbc.setConfigure(new TstConfig());
+			} catch (Exception e) {
+				throw new ApplicationErrorException("No se pudo configurar el DBC de prueba");
+			}
+			return dbc;
+		}
+	}
+	
+	public class TicketLineDaoImpl extends TicketLineDao{
+		
+		public TicketLineDaoImpl() {
+			super();
+		}
+
+		public TicketLineDaoImpl(AbstractConfig config) {
+			super(config);
+		}
+		
+		@Override
+		protected DatabaseConnection getDatabaseConnection() {
+			DatabaseConnection dbc = new DatabaseConnection();
+			try {
+				dbc.setConfigure(new TstConfig());
+			} catch (Exception e) {
+				throw new ApplicationErrorException("No se pudo configurar el DBC de prueba");
+			}
+			return dbc;
+		}
+	}
+	
+	
 	
 	public class TstConfig extends AbstractConfig {
 
