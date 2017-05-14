@@ -1,6 +1,6 @@
 package com.anibal.educational.rest_service.comps.dao;
 
-import com.anibal.educational.rest_service.comps.util.RestServiceCostant;
+import com.anibal.educational.rest_service.comps.util.RestServiceConstant;
 import com.anibal.educational.rest_service.comps.util.RestServiceUtil;
 import com.odhoman.api.utilities.config.AbstractConfig;
 import com.odhoman.api.utilities.dao.AbstractAbmDAO;
@@ -24,7 +24,7 @@ public abstract class RestServiceAbstractAbmDAO<F,T> extends AbstractAbmDAO<F,T>
 	
 	@Override
 	protected DatabaseConnection getDatabaseConnection() {
-		return RestServiceUtil.getDbConnectionMgr().getDatabaseConnection(RestServiceCostant.REST_SERVICE_DB_DATASOURCE_NAME);
+		return RestServiceUtil.getDbConnectionMgr().getDatabaseConnection(RestServiceConstant.REST_SERVICE_DB_DATASOURCE_NAME);
 	}
 
 }

@@ -67,9 +67,85 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<targetPath>WEB-INF/classes</targetPath>
+							<directory>resources-included</directory>
+							<includes>
+								<include>app.properties</include>
+							</includes>
+
+						</resource>
+
+					</webResources>
+				</configuration>
+			</plugin>
 		</plugins>
+
 		<finalName>rest_service_web</finalName>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>app.properties</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
 	</build>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<entorno>dev</entorno>
+			</properties>
+			<build>
+				<filters>
+					<filter>env-filters/filter-values-${entorno}.properties</filter>
+				</filters>
+			</build>
+		</profile>
+
+		<profile>
+			<id>tst</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<entorno>tst</entorno>
+			</properties>
+			<build>
+				<filters>
+					<filter>env-filters/filter-values-${entorno}.properties</filter>
+				</filters>
+			</build>
+		</profile>
+
+		<profile>
+			<id>prd</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<entorno>prd</entorno>
+			</properties>
+			<build>
+				<filters>
+					<filter>env-filters/filter-values-${entorno}.properties</filter>
+				</filters>
+			</build>
+		</profile>
+	</profiles>
 
 	<repositories>
 		<repository>

@@ -69,7 +69,7 @@ public class DetalleGastoDao extends RestServiceAbstractAbmDAO<DetalleGasto, Det
 		lista.add(item.getCodeConvinationId());
 		lista.add(item.getObservaciones());
 
-		fillListParameter(1, lista, ps);
+		fillInsertSelectListParameter(1, lista, ps);
 		
 	}
 
@@ -118,7 +118,7 @@ public class DetalleGastoDao extends RestServiceAbstractAbmDAO<DetalleGasto, Det
 		// Valores de Condiciones/Filtro
 		lista.add(filter.getDetalleId());
 		
-		fillListParameter(1, lista, ps);
+		fillInsertSelectListParameter(1, lista, ps);
 		
 	}
 
@@ -257,7 +257,7 @@ public class DetalleGastoDao extends RestServiceAbstractAbmDAO<DetalleGasto, Det
 		// Valores de Condiciones/Filtro
 		lista.add(filter.getDetalleId());
 		
-		fillListParameter(sequenceNumber, lista, ps);
+		fillInsertSelectListParameter(sequenceNumber, lista, ps);
 		
 	}
 

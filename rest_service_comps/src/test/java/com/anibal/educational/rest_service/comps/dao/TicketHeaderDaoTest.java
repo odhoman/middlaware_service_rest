@@ -51,20 +51,27 @@ public class TicketHeaderDaoTest {
 			logger.error("Ocurrio una excepcion al querer actualizar el TicketHeader " + dg, e);
 			fail(e.getMessage());
 		}
+		
+		try {
+			updateTicketHeader2(dg);
+		} catch (Exception e) {
+			logger.error("Ocurrio una excepcion al querer actualizar el TicketHeader " + dg, e);
+			fail(e.getMessage());
+		}
 
-//		try {
-//			dg = getTicketHeader(dg);
-//		} catch (Exception e) {
-//			logger.error("Ocurrio una excepcion al querer obtener el TicketHeader " + dg, e);
-//			fail(e.getMessage());
-//		}
-//
-//		try {
-//			deleteTicketHeader(dg);
-//		} catch (Exception e) {
-//			logger.error("Ocurrio una excepcion al querer eliminar el TicketHeader " + dg, e);
-//			fail(e.getMessage());
-//		}
+		try {
+			dg = getTicketHeader(dg);
+		} catch (Exception e) {
+			logger.error("Ocurrio una excepcion al querer obtener el TicketHeader " + dg, e);
+			fail(e.getMessage());
+		}
+
+		try {
+			deleteTicketHeader(dg);
+		} catch (Exception e) {
+			logger.error("Ocurrio una excepcion al querer eliminar el TicketHeader " + dg, e);
+			fail(e.getMessage());
+		}
 
 		logger.debug("testAllTicketHeader: Finalizando...");
 	}
@@ -105,6 +112,42 @@ public class TicketHeaderDaoTest {
 		t.setImporte(43345345D);
 		t.setUserId(852L);
 		t.setMoneda("MONEDA");
+//		t.setMonedaFuncional("MON_FUN");
+//		t.setTipoCambio(343434D);
+//		t.setTipoCambioFecha(new Date());
+//		t.setEmployeeId(5453L);
+//		t.setEmployeeDesc("EMPLOYEE_DESC");
+//		t.setSupplierId(85L);
+//		t.setSupplierDesc("SUPPLIER_DESC");
+//		t.setEmail("EMAIL");
+//		t.setPhoneNumber("PHONE_NUMBER");
+//		t.setDepartamentId(55155L);
+//		t.setDepartamentDesc("DEPARTMENT_DESC");
+
+		logger.debug(
+				"Se actualizará el siguiente TicketHeader con id " + t.getUserId() + " con los siguientes valores");
+		logger.debug("==> " + t);
+
+		dao.changeItem(filtro, t);
+
+		logger.debug("Se actualizó el TicketHeader " + t.getUserId() + " correctamente");
+
+	}
+	
+	private void updateTicketHeader2(TicketHeader t) throws Exception {
+		TicketHeader filtro = (TicketHeader) t.clone();
+
+//		t.setProyectoId(123L);
+//		t.setSubproyectoId(123L);
+//		t.setTareaId(43434L);
+//		t.setProyectoDesc("PROYECTO DESC");
+//		t.setSubproyectoDesc("SUBPROYECTO_DESC");
+//		t.setTareaDesc("TAREA_DESC");
+//		t.setGastosFecha(new Date());
+//		t.setCreacionFecha(new Date());
+//		t.setImporte(43345345D);
+//		t.setUserId(852L);
+//		t.setMoneda("MONEDA");
 		t.setMonedaFuncional("MON_FUN");
 		t.setTipoCambio(343434D);
 		t.setTipoCambioFecha(new Date());

@@ -51,20 +51,27 @@ public class TicketLineDaoTest {
 			logger.error("Ocurrio una excepcion al querer actualizar el TicketLine " + dg, e);
 			fail(e.getMessage());
 		}
+		
+		try {
+			updateTicketLine2(dg);
+		} catch (Exception e) {
+			logger.error("Ocurrio una excepcion al querer actualizar el TicketLine " + dg, e);
+			fail(e.getMessage());
+		}
 
-//		try {
-//			dg = getTicketLine(dg);
-//		} catch (Exception e) {
-//			logger.error("Ocurrio una excepcion al querer obtener el TicketLine " + dg, e);
-//			fail(e.getMessage());
-//		}
-//
-//		try {
-//			deleteTicketLine(dg);
-//		} catch (Exception e) {
-//			logger.error("Ocurrio una excepcion al querer eliminar el TicketLine " + dg, e);
-//			fail(e.getMessage());
-//		}
+		try {
+			dg = getTicketLine(dg);
+		} catch (Exception e) {
+			logger.error("Ocurrio una excepcion al querer obtener el TicketLine " + dg, e);
+			fail(e.getMessage());
+		}
+
+		try {
+			deleteTicketLine(dg);
+		} catch (Exception e) {
+			logger.error("Ocurrio una excepcion al querer eliminar el TicketLine " + dg, e);
+			fail(e.getMessage());
+		}
 
 		logger.debug("testAllTicketLine: Finalizando...");
 	}
@@ -105,6 +112,42 @@ public class TicketLineDaoTest {
 		tl.setSubproyectoId(34534L);
 		tl.setTareaId(4363L);
 		tl.setProyectoDesc("ProyectoDesc");
+//		tl.setSubproyectoDesc("SubproyectoDesc");
+//		tl.setTareaDesc("TareaDesc");
+//		tl.setGastosFecha(new Date());
+//		tl.setImporte(234234D);
+//		tl.setMoneda("moneda");
+//		tl.setMonedaFuncional("mon fun");
+//		tl.setTipoCambio(344D);
+//		tl.setTipoCambioFecha(new Date());
+//		tl.setUserId(234L);
+//		tl.setCreacionFecha(new Date());
+//		tl.setImageId(23424L);
+//		tl.setPathImageId("PathImageId");
+
+		logger.debug("Se actualizará el siguiente TicketLine con id " + tl.getUserId() + " con los siguientes valores");
+		logger.debug("==> " + tl);
+
+		dao.changeItem(filtro, tl);
+
+		logger.debug("Se actualizó el TicketLine " + tl.getUserId() + " correctamente");
+
+	}
+	
+	private void updateTicketLine2(TicketLine tl) throws Exception {
+		TicketLine filtro = (TicketLine) tl.clone();
+
+		tl.setTicketId(2342L);
+//		tl.setTipoGasto("asdfa");
+//		tl.setProveedorId(42342L);
+//		tl.setCiudadId(855L);
+//		tl.setPaisId(55365L);
+//		tl.setCiudadDesc("ciudad");
+//		tl.setPaisDesc("pais");
+//		tl.setProyectoId(43545L);
+//		tl.setSubproyectoId(34534L);
+//		tl.setTareaId(4363L);
+//		tl.setProyectoDesc("ProyectoDesc");
 		tl.setSubproyectoDesc("SubproyectoDesc");
 		tl.setTareaDesc("TareaDesc");
 		tl.setGastosFecha(new Date());
@@ -126,6 +169,7 @@ public class TicketLineDaoTest {
 		logger.debug("Se actualizó el TicketLine " + tl.getUserId() + " correctamente");
 
 	}
+
 
 	private TicketLine insertTicketLine() throws DAOException {
 		TicketLine u = new TicketLine();

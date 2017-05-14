@@ -28,16 +28,79 @@ public class TicketHeaderServiceImpl extends AbstractService implements TicketHe
 		try {
 			tickets = dao.getItems(filter);
 		} catch (DAOException e) {
-			logger.error(
-					"TicketHeaderServiceImpl - getTicketHeaderByUserId: ocurrio un error al querer obtener los ticket del userId "
-							+ userId,
-					e);
 			throw new TicketHeaderException(e);
 		}
 
 		logger.debug("TicketHeaderServiceImpl - getTicketHeaderByUserId: finalizando");
 
 		return tickets;
+	}
+
+	public TicketHeader createTicketHeader(TicketHeader ticketHeader) throws TicketHeaderException {
+		
+		logger.debug("TicketHeaderServiceImpl - createTicketHeader: iniciando");
+		
+		try {
+			dao.addItem(ticketHeader);
+		} catch (DAOException e) {
+			throw new TicketHeaderException(e);
+		}
+		
+		logger.debug("TicketHeaderServiceImpl - createTicketHeader: finalizando");
+		
+		return ticketHeader;
+	}
+
+	public void deleteTicketHeader(Long ticketId) throws TicketHeaderException {
+		
+		logger.debug("TicketHeaderServiceImpl - createTicketHeader: iniciando");
+		
+		TicketHeader ticketHeader = new TicketHeader();
+		ticketHeader.setTicketId(ticketId);
+		try {
+			dao.deleteItem(ticketHeader);
+		} catch (DAOException e) {
+			throw new TicketHeaderException(e);
+		}
+		
+		logger.debug("TicketHeaderServiceImpl - createTicketHeader: finalizando");
+	}
+
+	public void updateTicketHeader(Long id, TicketHeader ticketHeader) throws TicketHeaderException {
+		
+		logger.debug("TicketHeaderServiceImpl - updateTicketHeader: iniciando");
+		
+		TicketHeader filter = new TicketHeader();
+		filter.setTicketId(id);
+		
+		try {
+			dao.changeItem(filter, ticketHeader);
+		} catch (DAOException e) {
+			throw new TicketHeaderException(e);
+		}
+		
+		logger.debug("TicketHeaderServiceImpl - updateTicketHeader: finalizando");
+		
+	}
+
+	public TicketHeader getTicketHeaderById(Long ticketId) throws TicketHeaderException {
+
+		logger.debug("TicketHeaderServiceImpl - updateTicketHeader: iniciando");
+		
+		TicketHeader filter = new TicketHeader();
+		filter.setTicketId(ticketId);
+		
+		TicketHeader ticketHeader = null;
+		
+		try {
+			ticketHeader = dao.getItem(filter);
+		} catch (DAOException e) {
+			throw new TicketHeaderException(e);
+		}
+		
+		logger.debug("TicketHeaderServiceImpl - updateTicketHeader: finalizando");
+		
+		return ticketHeader;
 	}
 
 }

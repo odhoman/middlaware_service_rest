@@ -69,16 +69,108 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(item.getPathImageId());
 		
 
-		fillListParameter(1, fields, ps);
+		fillInsertSelectListParameter(1, fields, ps);
 		
 	}
 
 	@Override
 	protected List<String> getUpdateFields(TicketLine item) {
-		return Arrays.asList("TICKET_ID", "TIPO_GASTO", "PROVEEDOR_ID", "CIUDAD_ID", "PAIS_ID",
-				"CIUDAD_DESC", "PAIS_DESC", "PROYECTO_ID", "SUBPROYECTO_ID", "TAREA_ID", "PROYECTO_DESC",
-				"SUBPROYECTO_DESC", "TAREA_DESC", "GASTOS_FECHA", "IMPORTE", "MONEDA", "MONEDA_FUNCIONAL",
-				"TIPO_CAMBIO", "TIPO_CAMBIO_FECHA", "USER_ID", "CREACION_FECHA", "IMAGE_ID", "PATH_IMAGE_ID");
+		
+		List<String> fieldsUpdate = new ArrayList<String>();
+		
+		if (item.getTicketId() != null) {
+			fieldsUpdate.add("TICKET_ID");
+		}
+		
+		if (isNotEmpty(item.getTipoGasto())) {
+			fieldsUpdate.add("TIPO_GASTO");
+		}
+		
+		if (item.getProveedorId() != null) {
+			fieldsUpdate.add("PROVEEDOR_ID");
+		}
+		
+		if (item.getCiudadId() != null) {
+			fieldsUpdate.add("CIUDAD_ID");
+		}
+		
+		if (item.getPaisId() != null) {
+			fieldsUpdate.add("PAIS_ID");
+		}
+		
+		if (isNotEmpty(item.getCiudadDesc())) {
+			fieldsUpdate.add("CIUDAD_DESC");
+		}
+		
+		if (isNotEmpty(item.getPaisDesc())) {
+			fieldsUpdate.add("PAIS_DESC");
+		}
+
+		if (item.getProyectoId() != null) {
+			fieldsUpdate.add("PROYECTO_ID");
+		}
+		
+		if (item.getSubproyectoId() != null) {
+			fieldsUpdate.add("SUBPROYECTO_ID");
+		}
+		
+		if (item.getTareaId() != null) {
+			fieldsUpdate.add("TAREA_ID");
+		}	
+		
+		if (isNotEmpty(item.getProyectoDesc())) {
+			fieldsUpdate.add("PROYECTO_DESC");
+		}
+		
+		if (isNotEmpty(item.getSubproyectoDesc())) {
+			fieldsUpdate.add("SUBPROYECTO_DESC");
+		}
+		
+		if (isNotEmpty(item.getTareaDesc())) {
+			fieldsUpdate.add("TAREA_DESC");
+		}
+		
+		if (item.getGastosFecha()!= null) {
+			fieldsUpdate.add("GASTOS_FECHA");
+		}	
+		
+		if (item.getImporte()!= null) {
+			fieldsUpdate.add("IMPORTE");
+		}	
+		
+		if (isNotEmpty(item.getMoneda())){
+			fieldsUpdate.add("MONEDA");
+		}	
+		
+		if (isNotEmpty(item.getMonedaFuncional())) {
+			fieldsUpdate.add("MONEDA_FUNCIONAL");
+		}
+		
+		if (item.getTipoCambio()!= null) {
+			fieldsUpdate.add("TIPO_CAMBIO");
+		}	
+		
+		if (item.getTipoCambioFecha()!= null) {
+			fieldsUpdate.add("TIPO_CAMBIO_FECHA");
+		}	
+		
+		if (item.getUserId()!= null) {
+			fieldsUpdate.add("USER_ID");
+		}	
+		
+		if (item.getCreacionFecha()!= null) {
+			fieldsUpdate.add("CREACION_FECHA");
+		}	
+		
+		if (item.getImageId()!= null) {
+			fieldsUpdate.add("IMAGE_ID");
+		}
+		
+		if (isNotEmpty(item.getPathImageId())) {
+			fieldsUpdate.add("PATH_IMAGE_ID");
+		}
+		
+		return fieldsUpdate;
 	}
 
 	@Override
@@ -123,9 +215,9 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(item.getPathImageId());
 
 		// Valores de Condiciones/Filtro
-		fields.add(item.getLineId());
+		fields.add(filter.getLineId());
 
-		fillListParameter(1, fields, ps);
+		fillUpdateListParameter(1, fields, ps);
 		
 	}
 
@@ -336,7 +428,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		// Valores de Condiciones/Filtro
 		lista.add(filter.getLineId());
 		
-		fillListParameter(sequenceNumber, lista, ps);
+		fillInsertSelectListParameter(sequenceNumber, lista, ps);
 		
 	}
 

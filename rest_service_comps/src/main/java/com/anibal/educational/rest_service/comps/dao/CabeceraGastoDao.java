@@ -78,7 +78,7 @@ public class CabeceraGastoDao extends RestServiceAbstractAbmDAO<CabeceraGasto, C
 		lista.add(item.getUserId());
 		lista.add(item.getObservaciones());
 
-		fillListParameter(2, lista, ps);
+		fillInsertSelectListParameter(2, lista, ps);
 
 	}
 
@@ -246,7 +246,7 @@ public class CabeceraGastoDao extends RestServiceAbstractAbmDAO<CabeceraGasto, C
 
 		// sequenceNumber =
 		
-		fillListParameter(sequenceNumber, lista, ps);
+		fillInsertSelectListParameter(sequenceNumber, lista, ps);
 
 		// if (item.getProyectoId() != null) {
 		// sequenceNumber++;

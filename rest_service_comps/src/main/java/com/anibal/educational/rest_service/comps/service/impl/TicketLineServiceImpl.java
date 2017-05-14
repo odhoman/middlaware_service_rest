@@ -40,4 +40,72 @@ public class TicketLineServiceImpl extends AbstractService implements TicketLine
 		return tickets;
 	}
 
+	public TicketLine createTicketLine(TicketLine ticketLine) throws TicketLineServiceException {
+
+		logger.debug("TicketLineServiceImpl - createTicketLine: iniciando");
+
+		try {
+			dao.addItem(ticketLine);
+		} catch (DAOException e) {
+			throw new TicketLineServiceException(e);
+		}
+
+		logger.debug("TicketLineServiceImpl - createTicketLine: finalizando");
+
+		return ticketLine;
+	}
+
+	public void updateTicketLine(Long id, TicketLine ticketLine) throws TicketLineServiceException {
+
+		logger.debug("TicketLineServiceImpl - updateTicketLine: iniciando");
+
+		TicketLine filter = new TicketLine();
+		filter.setLineId(id);
+
+		try {
+			dao.changeItem(filter, ticketLine);
+		} catch (DAOException e) {
+			throw new TicketLineServiceException(e);
+		}
+
+		logger.debug("TicketLineServiceImpl - updateTicketLine: finalizando");
+	}
+
+	public void deleteTicketLine(Long ticketId) throws TicketLineServiceException {
+
+		logger.debug("TicketLineServiceImpl - deleteTicketLine: iniciando");
+
+		TicketLine filter = new TicketLine();
+		filter.setLineId(ticketId);
+
+		try {
+			dao.deleteItem(filter);
+		} catch (DAOException e) {
+			throw new TicketLineServiceException(e);
+		}
+
+		logger.debug("TicketLineServiceImpl - deleteTicketLine: finalizando");
+	}
+
+	public TicketLine getTicketLine(Long ticketId) throws TicketLineServiceException {
+
+		logger.debug("TicketLineServiceImpl - getTicketLine: iniciando");
+
+		TicketLine filter = new TicketLine();
+		filter.setLineId(ticketId);
+
+		TicketLine ticketLine = new TicketLine();
+
+		try {
+			ticketLine = dao.getItem(filter);
+		} catch (DAOException e) {
+			throw new TicketLineServiceException(e);
+		}
+
+		logger.debug("TicketLineServiceImpl - getTicketLine: finalizando");
+
+		return ticketLine;
+
+	}
+
 }

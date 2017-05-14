@@ -10,14 +10,17 @@ import com.anibal.educational.rest_service.comps.dao.DetalleGastoDao;
 import com.anibal.educational.rest_service.comps.dao.TicketHeaderDao;
 import com.anibal.educational.rest_service.comps.dao.TicketLineDao;
 import com.anibal.educational.rest_service.comps.dao.TicketUserDao;
+import com.anibal.educational.rest_service.comps.dao.file_managing.impl.FileSystemFileManagingDao;
 import com.anibal.educational.rest_service.comps.service.CabeceraGastoService;
 import com.anibal.educational.rest_service.comps.service.DetalleGastoService;
+import com.anibal.educational.rest_service.comps.service.FileManagingService;
 import com.anibal.educational.rest_service.comps.service.ServiceRestData;
 import com.anibal.educational.rest_service.comps.service.TicketHeaderService;
 import com.anibal.educational.rest_service.comps.service.TicketLineService;
 import com.anibal.educational.rest_service.comps.service.TicketUserService;
 import com.anibal.educational.rest_service.comps.service.impl.CabeceraGastoServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.DetalleGastoServiceImpl;
+import com.anibal.educational.rest_service.comps.service.impl.FileManagingServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.ServiceRestDataImpl;
 import com.anibal.educational.rest_service.comps.service.impl.TicketHeaderServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.TicketLineServiceImpl;
@@ -68,5 +71,9 @@ public class RestServiceContextConfigurator {
 		return new TicketLineServiceImpl(new TicketLineDao());
 	}
 	
+	@Bean
+	public FileManagingService getFileManagingService(){
+		return new FileManagingServiceImpl(new FileSystemFileManagingDao());
+	}
 }
 

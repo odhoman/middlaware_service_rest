@@ -97,38 +97,104 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 		fields.add(item.getDepartamentId());
 		fields.add(item.getDepartamentDesc());
 
-		fillListParameter(1, fields, ps);
+		fillInsertSelectListParameter(1, fields, ps);
 
 	}
 
 	@Override
 	protected List<String> getUpdateFields(TicketHeader item) {
-		List<String> fields = new ArrayList<String>();
+		List<String> fieldsSelectConditions = new ArrayList<String>();
 
-		fields.add("PROYECTO_ID");
-		fields.add("SUBPROYECTO_ID");
-		fields.add("TAREA_ID");
-		fields.add("PROYECTO_DESC");
-		fields.add("SUBPROYECTO_DESC");
-		fields.add("TAREA_DESC");
-		fields.add("GASTOS_FECHA");
-		fields.add("CREACION_FECHA");
-		fields.add("IMPORTE");
-		fields.add("USER_ID");
-		fields.add("MONEDA");
-		fields.add("MONEDA_FUNCIONAL");
-		fields.add("TIPO_CAMBIO");
-		fields.add("TIPO_CAMBIO_FECHA");
-		fields.add("EMPLOYEE_ID");
-		fields.add("EMPLOYEE_DESC");
-		fields.add("SUPPLIER_ID");
-		fields.add("SUPPLIER_DESC");
-		fields.add("EMAIL");
-		fields.add("PHONE_NUMBER");
-		fields.add("DEPARTMENT_ID");
-		fields.add("DEPARTMENT_DESC");
 
-		return fields;
+		if (item.getProyectoId() != null) {
+			fieldsSelectConditions.add("PROYECTO_ID");
+		}
+
+		if (item.getSubproyectoId() != null) {
+			fieldsSelectConditions.add("SUBPROYECTO_ID");
+		}
+
+		if (item.getTareaId() != null) {
+			fieldsSelectConditions.add("TAREA_ID");
+		}
+
+		if (item.getProyectoDesc() != null) {
+			fieldsSelectConditions.add("PROYECTO_DESC");
+		}
+
+		if (isNotEmpty(item.getSubproyectoDesc())) {
+			fieldsSelectConditions.add("SUBPROYECTO_DESC");
+		}
+
+		if (isNotEmpty(item.getTareaDesc())) {
+			fieldsSelectConditions.add("TAREA_DESC");
+		}
+
+		if (item.getGastosFecha() != null) {
+			fieldsSelectConditions.add("GASTOS_FECHA");
+		}
+
+		if (item.getCreacionFecha() != null) {
+			fieldsSelectConditions.add("CREACION_FECHA");
+		}
+
+		if (item.getImporte() != null) {
+			fieldsSelectConditions.add("IMPORTE");
+		}
+
+		if (item.getUserId() != null) {
+			fieldsSelectConditions.add("USER_ID");
+		}
+
+		if (isNotEmpty(item.getMoneda())) {
+			fieldsSelectConditions.add("MONEDA");
+		}
+
+		if (isNotEmpty(item.getMonedaFuncional())) {
+			fieldsSelectConditions.add("MONEDA_FUNCIONAL");
+		}
+
+		if (item.getTipoCambio() != null) {
+			fieldsSelectConditions.add("TIPO_CAMBIO");
+		}
+
+		if (item.getTipoCambioFecha() != null) {
+			fieldsSelectConditions.add("TIPO_CAMBIO_FECHA");
+		}
+
+		if (item.getEmployeeId() != null) {
+			fieldsSelectConditions.add("EMPLOYEE_ID");
+		}
+
+		if (isNotEmpty(item.getEmployeeDesc())) {
+			fieldsSelectConditions.add("EMPLOYEE_DESC");
+		}
+
+		if (item.getSupplierId() != null) {
+			fieldsSelectConditions.add("SUPPLIER_ID");
+		}
+
+		if (isNotEmpty(item.getSupplierDesc())) {
+			fieldsSelectConditions.add("SUPPLIER_DESC");
+		}
+
+		if (isNotEmpty(item.getEmail())) {
+			fieldsSelectConditions.add("EMAIL");
+		}
+
+		if (isNotEmpty(item.getPhoneNumber())) {
+			fieldsSelectConditions.add("PHONE_NUMBER");
+		}
+
+		if (item.getDepartamentId() != null) {
+			fieldsSelectConditions.add("DEPARTMENT_ID");
+		}
+
+		if (isNotEmpty(item.getDepartamentDesc())) {
+			fieldsSelectConditions.add("DEPARTMENT_DESC");
+		}
+
+		return fieldsSelectConditions;
 
 	}
 
@@ -174,7 +240,7 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 		// Valores de Condiciones/Filtro
 		fields.add(filter.getTicketId());
 
-		fillListParameter(1, fields, ps);
+		fillUpdateListParameter(1, fields, ps);
 
 	}
 
@@ -406,7 +472,7 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 		// Valores de Condiciones/Filtro
 		lista.add(filter.getTicketId());
 		
-		fillListParameter(sequenceNumber, lista, ps);
+		fillInsertSelectListParameter(sequenceNumber, lista, ps);
 
 	}
 }

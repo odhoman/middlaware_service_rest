@@ -52,20 +52,27 @@ public class TicketUserDaoTest {
 			logger.error("Ocurrio una excepcion al querer actualizar el user " + dg, e);
 			fail(e.getMessage());
 		}
+		
+		try {
+			updateUser2(dg);
+		} catch (Exception e) {
+			logger.error("Ocurrio una excepcion al querer actualizar el user " + dg, e);
+			fail(e.getMessage());
+		}
 
-//		try {
-//			dg = getUser(dg);
-//		} catch (Exception e) {
-//			logger.error("Ocurrio una excepcion al querer obtener el user " + dg, e);
-//			fail(e.getMessage());
-//		}
-//
-//		try {
-//			deleteUser(dg);
-//		} catch (Exception e) {
-//			logger.error("Ocurrio una excepcion al querer eliminar el user " + dg, e);
-//			fail(e.getMessage());
-//		}
+		try {
+			dg = getUser(dg);
+		} catch (Exception e) {
+			logger.error("Ocurrio una excepcion al querer obtener el user " + dg, e);
+			fail(e.getMessage());
+		}
+
+		try {
+			deleteUser(dg);
+		} catch (Exception e) {
+			logger.error("Ocurrio una excepcion al querer eliminar el user " + dg, e);
+			fail(e.getMessage());
+		}
 
 		logger.debug("testAllUser: Finalizando...");
 
@@ -94,6 +101,38 @@ public class TicketUserDaoTest {
 		return dg;
 	}
 
+	private void updateUser2(TicketUser u) throws Exception {
+
+		TicketUser filtro = (TicketUser) u.clone();
+
+//		u.setUserName("NOMBRE_CAMbiado");
+//		u.setUserFirstame("Juan");
+//		u.setUserLastName("PEREZ");
+//		u.setUserEmail("asdfads@gmail.com");
+//		u.setUserPhoneNumber("12156545654");
+//		u.setHireDateStart(new Date());
+//		u.setHireDateEnd(new Date());
+//		u.setStreet("calle");
+		u.setCity("ciudad");
+		u.setState("BUenos Aires");
+		u.setZipCode("1657");
+		u.setCountry("Argentina");
+		u.setEmployeeId(5L);
+		u.setEmployeeDesc("empleado comun");
+		u.setImageId(3L);
+		u.setPathImage("path");
+
+		logger.debug(
+				"Se actualizará el siguiente detalle usuario con id " + u.getUserId() + " con los siguientes valores");
+		logger.debug("==> " + u);
+
+		dao.changeItem(filtro, u);
+
+		logger.debug("Se actualizó el usuario " + u.getUserId() + " correctamente");
+
+	}
+	
+	
 	private void updateUser(TicketUser u) throws Exception {
 
 		TicketUser filtro = (TicketUser) u.clone();
@@ -106,14 +145,14 @@ public class TicketUserDaoTest {
 		u.setHireDateStart(new Date());
 		u.setHireDateEnd(new Date());
 		u.setStreet("calle");
-		u.setCity("ciudad");
-		u.setState("BUenos Aires");
-		u.setZipCode("1657");
-		u.setCountry("Argentina");
-		u.setEmployeeId(5L);
-		u.setEmployeeDesc("empleado comun");
-		u.setImageId(3L);
-		u.setPathImage("path");
+//		u.setCity("ciudad");
+//		u.setState("BUenos Aires");
+//		u.setZipCode("1657");
+//		u.setCountry("Argentina");
+//		u.setEmployeeId(5L);
+//		u.setEmployeeDesc("empleado comun");
+//		u.setImageId(3L);
+//		u.setPathImage("path");
 
 		logger.debug(
 				"Se actualizará el siguiente detalle usuario con id " + u.getUserId() + " con los siguientes valores");

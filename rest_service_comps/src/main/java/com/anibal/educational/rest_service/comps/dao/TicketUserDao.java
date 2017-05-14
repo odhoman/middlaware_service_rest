@@ -80,34 +80,81 @@ public class TicketUserDao extends RestServiceAbstractAbmDAO<TicketUser, TicketU
 		fields.add(item.getImageId());
 		fields.add(item.getPathImage());
 
-		fillListParameter(1, fields, ps);
+		fillInsertSelectListParameter(1, fields, ps);
 		
 		
 	}
 
 	@Override
 	protected List<String> getUpdateFields(TicketUser item) {
+		List<String> fieldsSelectConditions = new ArrayList<String>();
 		
-		List<String> fields = new ArrayList<String>();
+		if (isNotEmpty(item.getUserName())) {
+			fieldsSelectConditions.add("USER_NAME");
+		}
 		
-		fields.add("USER_NAME");
-		fields.add("USER_FIRST_NAME");
-		fields.add("USER_LAST_NAME");
-		fields.add("USER_EMAIL");
-		fields.add("USER_PHONE_NUMBER");
-		fields.add("HIRE_DATE_START");
-		fields.add("HIRE_DATE_END");
-		fields.add("STREET");
-		fields.add("CITY");
-		fields.add("STATE");
-		fields.add("ZIPCODE");
-		fields.add("COUNTRY");
-		fields.add("EMPLOYEE_ID");
-		fields.add("EMPLOYEE_DESC");
-		fields.add("IMAGE_ID");
-		fields.add("PATH_IMAGE_DESC");
+		if (isNotEmpty(item.getUserFirstame())) {
+			fieldsSelectConditions.add("USER_FIRST_NAME");
+		}
 		
-		return fields;
+		if (isNotEmpty(item.getUserLastName())) {
+			fieldsSelectConditions.add("USER_LAST_NAME");
+		}
+		
+		if (isNotEmpty(item.getUserEmail())) {
+			fieldsSelectConditions.add("USER_EMAIL");
+		}
+		
+		if (isNotEmpty(item.getUserPhoneNumber())) {
+			fieldsSelectConditions.add("USER_PHONE_NUMBER");
+		}
+		
+		if (isNotNull(item.getHireDateStart())) {
+			fieldsSelectConditions.add("HIRE_DATE_START");
+		}
+		
+		if (isNotNull(item.getHireDateEnd())) {
+			fieldsSelectConditions.add("HIRE_DATE_END");
+		}
+		
+		if (isNotEmpty(item.getStreet())) {
+			fieldsSelectConditions.add("STREET");
+		}
+		
+		
+		if (isNotEmpty(item.getCity())) {
+			fieldsSelectConditions.add("CITY");
+		}	
+		
+		if (isNotEmpty(item.getState())) {
+			fieldsSelectConditions.add("STATE");
+		}
+		
+		if (isNotEmpty(item.getZipCode())) {
+			fieldsSelectConditions.add("ZIPCODE");
+		}	
+		
+		if (isNotEmpty(item.getCountry())) {
+			fieldsSelectConditions.add("COUNTRY");
+		}	
+		
+		if (isNotNull(item.getEmployeeId())) {
+			fieldsSelectConditions.add("EMPLOYEE_ID");
+		}	
+		
+		if (isNotEmpty(item.getEmployeeDesc())) {
+			fieldsSelectConditions.add("EMPLOYEE_DESC");
+		}	
+		
+		if (isNotNull(item.getImageId())) {
+			fieldsSelectConditions.add("IMAGE_ID");
+		}	
+		
+		if (isNotEmpty(item.getPathImage())) {
+			fieldsSelectConditions.add("PATH_IMAGE_DESC");
+		}
+		
+		return fieldsSelectConditions;
 	}
 
 	@Override
@@ -146,7 +193,7 @@ public class TicketUserDao extends RestServiceAbstractAbmDAO<TicketUser, TicketU
 		// Valores de Condiciones/Filtro
 		fields.add(filter.getUserId());
 		
-		fillListParameter(1, fields, ps);
+		fillUpdateListParameter(1, fields, ps);
 		
 	}
 
@@ -336,7 +383,7 @@ public class TicketUserDao extends RestServiceAbstractAbmDAO<TicketUser, TicketU
 		// Valores de Condiciones/Filtro
 		lista.add(filter.getUserId());
 		
-		fillListParameter(sequenceNumber, lista, ps);
+		fillInsertSelectListParameter(sequenceNumber, lista, ps);
 		
 	}
 	
