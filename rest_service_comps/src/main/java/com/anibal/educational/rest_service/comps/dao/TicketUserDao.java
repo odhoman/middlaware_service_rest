@@ -52,6 +52,7 @@ public class TicketUserDao extends RestServiceAbstractAbmDAO<TicketUser, TicketU
 		fields.add("EMPLOYEE_DESC");
 		fields.add("IMAGE_ID");
 		fields.add("PATH_IMAGE_DESC");
+		fields.add("USER_PASSWORD");
 		return fields;
 	}
 
@@ -79,6 +80,7 @@ public class TicketUserDao extends RestServiceAbstractAbmDAO<TicketUser, TicketU
 		fields.add(item.getEmployeeDesc());
 		fields.add(item.getImageId());
 		fields.add(item.getPathImage());
+		fields.add(item.getUserPassword());
 
 		fillInsertSelectListParameter(1, fields, ps);
 		
@@ -154,6 +156,10 @@ public class TicketUserDao extends RestServiceAbstractAbmDAO<TicketUser, TicketU
 			fieldsSelectConditions.add("PATH_IMAGE_DESC");
 		}
 		
+		if (isNotEmpty(item.getUserPassword())) {
+			fieldsSelectConditions.add("USER_PASSWORD");
+		}
+		
 		return fieldsSelectConditions;
 	}
 
@@ -189,6 +195,7 @@ public class TicketUserDao extends RestServiceAbstractAbmDAO<TicketUser, TicketU
 		fields.add(item.getEmployeeDesc());
 		fields.add(item.getImageId());
 		fields.add(item.getPathImage());
+		fields.add(item.getUserPassword());
 
 		// Valores de Condiciones/Filtro
 		fields.add(filter.getUserId());
@@ -217,6 +224,7 @@ public class TicketUserDao extends RestServiceAbstractAbmDAO<TicketUser, TicketU
 		fields.add("EMPLOYEE_DESC");
 		fields.add("IMAGE_ID");
 		fields.add("PATH_IMAGE_DESC");
+		fields.add("USER_PASSWORD");
 		return fields;
 	}
 
@@ -359,6 +367,7 @@ public class TicketUserDao extends RestServiceAbstractAbmDAO<TicketUser, TicketU
 		u.setEmployeeDesc(rs.getString("EMPLOYEE_DESC"));
 		u.setImageId(getValueOrNull(rs.getLong("IMAGE_ID"),rs));
 		u.setPathImage(rs.getString("PATH_IMAGE_DESC"));
+		u.setUserPassword(rs.getString("USER_PASSWORD"));
 		
 		return u;
 	}

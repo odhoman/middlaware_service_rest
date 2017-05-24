@@ -66,7 +66,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(item.getUserId());
 		fields.add(item.getCreacionFecha());
 		fields.add(item.getImageId());
-		fields.add(item.getPathImageId());
+		fields.add(item.getPathImage());
 		
 
 		fillInsertSelectListParameter(1, fields, ps);
@@ -166,7 +166,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 			fieldsUpdate.add("IMAGE_ID");
 		}
 		
-		if (isNotEmpty(item.getPathImageId())) {
+		if (isNotEmpty(item.getPathImage())) {
 			fieldsUpdate.add("PATH_IMAGE_ID");
 		}
 		
@@ -212,7 +212,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(item.getUserId());
 		fields.add(item.getCreacionFecha());
 		fields.add(item.getImageId());
-		fields.add(item.getPathImageId());
+		fields.add(item.getPathImage());
 
 		// Valores de Condiciones/Filtro
 		fields.add(filter.getLineId());
@@ -331,7 +331,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 			fieldsSelectConditions.add("IMAGE_ID");
 		}
 		
-		if (isNotEmpty(filter.getPathImageId())) {
+		if (isNotEmpty(filter.getPathImage())) {
 			fieldsSelectConditions.add("PATH_IMAGE_ID");
 		}
 		
@@ -369,7 +369,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(filter.getUserId());
 		fields.add(filter.getCreacionFecha());
 		fields.add(filter.getImageId());
-		fields.add(filter.getPathImageId());
+		fields.add(filter.getPathImage());
 
 		fillSelectListParameter(sequenceNumber, fields, ps);
 		
@@ -402,7 +402,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		tl.setUserId(getValueOrNull(rs.getLong("USER_ID"),rs));
 		tl.setCreacionFecha(getValueOrNull(rs.getDate("CREACION_FECHA"),rs));
 		tl.setImageId(getValueOrNull(rs.getLong("IMAGE_ID"),rs));
-		tl.setPathImageId(rs.getString("PATH_IMAGE_ID"));
+		tl.setPathImage(rs.getString("PATH_IMAGE_ID"));
 		
 		return tl;
 	}

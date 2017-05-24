@@ -15,5 +15,7 @@ public interface TicketHeaderService {
 	public List<TicketHeader> getTicketHeaderByUserId(Long userId) throws TicketHeaderException;
 	
 	public TicketHeader getTicketHeaderById(Long ticketId) throws TicketHeaderException;
+	
+	public List<TicketHeader> getTicketHeaderByUserAndTicketId(Long userId, Long ticketId) throws TicketHeaderException;
 		
 }

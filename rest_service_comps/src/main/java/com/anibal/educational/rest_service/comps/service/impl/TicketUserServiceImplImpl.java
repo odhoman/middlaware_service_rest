@@ -6,12 +6,14 @@ import java.io.InputStream;
 import com.anibal.educational.rest_service.comps.dao.file_managing.impl.FileSystemFileManagingDao;
 import com.anibal.educational.rest_service.comps.service.FileManagingException;
 import com.anibal.educational.rest_service.comps.service.FileManagingService;
+import com.anibal.educational.rest_service.comps.service.TicketUserAuteticationException;
 import com.anibal.educational.rest_service.comps.service.TicketUserException;
 import com.anibal.educational.rest_service.comps.service.TicketUserService;
 import com.anibal.educational.rest_service.comps.util.RestServiceConstant;
 import com.anibal.educational.rest_service.domain.TicketUser;
 import com.odhoman.api.utilities.dao.AbstractAbmDAO;
 import com.odhoman.api.utilities.dao.DAOException;
+import com.odhoman.api.utilities.dao.ItemNotFoundException;
 
 public class TicketUserServiceImplImpl extends AbstractService implements TicketUserService {
 
@@ -39,6 +41,8 @@ public class TicketUserServiceImplImpl extends AbstractService implements Ticket
 
 		logger.debug("TicketUserServiceImplImpl - getUser: finalizando");
 
+		user.setUserPassword(null);
+		
 		return user;
 	}
 
@@ -143,5 +147,44 @@ public class TicketUserServiceImplImpl extends AbstractService implements Ticket
 		
 		return file;
 	}
+	
+	public TicketUser performAuthentication(String userName, String pass) throws TicketUserException {
+
+		TicketUser user = null;
+		
+		
+		if(userName==null || userName.isEmpty() || pass==null || pass.isEmpty()){
+			logger.warn("TicketUserServiceImplImpl - performAuthentication: Credenciales incorrectas");
+			throw new TicketUserAuteticationException("Credenciales incompletas");
+		}
+
+		logger.debug("TicketUserServiceImplImpl - performAuthentication: iniciando");
+
+		TicketUser filter = new TicketUser();
+		filter.setUserName(userName);
+		try {
+			user = dao.getItem(filter); 
+		} catch (ItemNotFoundException e) {
+			logger.warn("TicketUserServiceImplImpl - performAuthentication: Credenciales incorrectas",e);
+			throw new TicketUserAuteticationException("Credenciales incorrectas");
+		} catch (DAOException e) {
+			logger.error("TicketUserServiceImplImpl - performAuthentication: ocurrio un error al realizar la autenticacion", e);
+			throw new TicketUserException(e);
+		}
+		
+		String userPass = user.getUserPassword();
+		
+		if(userPass==null || userPass.isEmpty() || !userPass.equals(pass)){
+			logger.warn("TicketUserServiceImplImpl - performAuthentication: Credenciales incorrectas");
+			throw new TicketUserAuteticationException("Credenciales incorrectas");
+		}
+
+		logger.debug("TicketUserServiceImplImpl - performAuthentication: finalizando");
+
+		user.setUserPassword(null);
+		
+		return user;
+	}
+
 
 }

@@ -145,6 +145,7 @@ public class TicketUserDaoTest {
 		u.setHireDateStart(new Date());
 		u.setHireDateEnd(new Date());
 		u.setStreet("calle");
+		u.setUserPassword("5f4dcc3b5aa765d61d8327deb882cf99");
 //		u.setCity("ciudad");
 //		u.setState("BUenos Aires");
 //		u.setZipCode("1657");
@@ -167,6 +168,8 @@ public class TicketUserDaoTest {
 	private TicketUser insertUser() throws DAOException {
 
 		TicketUser u = new TicketUser();
+		
+		u.setUserPassword("11111111111111111111111111111111");
 
 		logger.debug("Se insertará el siguiente usuario");
 		logger.debug("==> " + u);

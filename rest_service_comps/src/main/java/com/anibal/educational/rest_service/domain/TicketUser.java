@@ -6,6 +6,7 @@ public class TicketUser implements Cloneable{
 	
 	private Long userId;
 	private String userName;
+	private String userPassword;
 	private String userFirstame;
 	private String userLastName;
 	private String userEmail;
@@ -128,18 +129,24 @@ public class TicketUser implements Cloneable{
 	public void setPathImage(String pathImage) {
 		this.pathImage = pathImage;
 	}
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", userName=" + userName + ", userFirstame=" + userFirstame
-				+ ", userLastName=" + userLastName + ", userEmail=" + userEmail + ", userPhoneNumber=" + userPhoneNumber
-				+ ", hireDateStart=" + hireDateStart + ", hireDateEnd=" + hireDateEnd + ", street=" + street + ", city="
-				+ city + ", state=" + state + ", zipCode=" + zipCode + ", country=" + country + ", employeeId="
-				+ employeeId + ", employeeDesc=" + employeeDesc + ", imageId=" + imageId + ", pathImage=" + pathImage
-				+ "]";
+
+    public String getUserPassword() {
+		return userPassword;
+	}
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 	
-	
-    @Override
+	@Override
+	public String toString() {
+		return "TicketUser [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword
+				+ ", userFirstame=" + userFirstame + ", userLastName=" + userLastName + ", userEmail=" + userEmail
+				+ ", userPhoneNumber=" + userPhoneNumber + ", hireDateStart=" + hireDateStart + ", hireDateEnd="
+				+ hireDateEnd + ", street=" + street + ", city=" + city + ", state=" + state + ", zipCode=" + zipCode
+				+ ", country=" + country + ", employeeId=" + employeeId + ", employeeDesc=" + employeeDesc
+				+ ", imageId=" + imageId + ", pathImage=" + pathImage + "]";
+	}
+	@Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }

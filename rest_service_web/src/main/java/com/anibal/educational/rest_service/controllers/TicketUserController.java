@@ -2,10 +2,8 @@ package com.anibal.educational.rest_service.controllers;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,10 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.anibal.educational.rest_service.comps.service.TicketUserAuteticationException;
 import com.anibal.educational.rest_service.comps.service.TicketUserException;
 import com.anibal.educational.rest_service.comps.service.TicketUserService;
 import com.anibal.educational.rest_service.domain.Message;
 import com.anibal.educational.rest_service.domain.TicketUser;
+import com.anibal.educational.rest_service.domain.UserCredential;
 
 @RestController
 @ContextConfiguration(classes = RestServiceContextConfigurator.class, loader = AnnotationConfigContextLoader.class)
@@ -129,7 +129,7 @@ public class TicketUserController extends AbstractRestService {
 
 		if (file != null && !file.isEmpty()) {
 
-			logger.debug("TicketUserController - updateUser: Iniciando...");
+			logger.debug("TicketUserController - uploadUserImage: Iniciando...");
 
 			try {
 				ticketUserService.createUserImage(userId, file.getInputStream(),
@@ -236,6 +236,30 @@ public class TicketUserController extends AbstractRestService {
 //		}
 
 		return new ResponseEntity<String>("Archivo subido correctamente", HttpStatus.OK);
+
+	}
+	
+	@RequestMapping(value = "/performAuthentication", method = RequestMethod.POST)
+	public ResponseEntity<?> performAuthentication(@RequestBody UserCredential user) {
+
+		logger.debug("TicketUserController - performAuthentication: Iniciando...");
+		
+		TicketUser tu = null;
+		
+		try {
+			tu = ticketUserService.performAuthentication(user.getUser(), user.getPass());
+		} catch (TicketUserAuteticationException e) {
+			logger.error("TicketUserController - performAuthentication: Credenciales incompletas o incorrectas...", e);
+			return new ResponseEntity<String>(HttpStatus.UNAUTHORIZED);
+		} catch (TicketUserException e) {
+			logger.error("TicketUserController - performAuthentication: No se pudo autenticar el user...", e);
+			return new ResponseEntity<Message>(new Message(1, "No se pudo autenticar el user"),
+					HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		logger.debug("TicketUserController - performAuthentication: Finalizado ");
+
+		return new ResponseEntity<TicketUser>(tu, HttpStatus.OK);
 
 	}
 

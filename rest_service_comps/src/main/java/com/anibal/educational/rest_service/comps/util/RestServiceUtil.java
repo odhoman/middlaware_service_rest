@@ -29,5 +29,20 @@ public class RestServiceUtil {
 	public static void setConfig(AbstractConfig cfg) {
 		config = cfg;
 	}
+	
+	/** Construye el nombre del archivos desde un nombre y la extension del archivo original */
+	
+	public static String buildFileName(String name, String originalFileName) {
+
+		String fileName = null;
+		if (originalFileName != null && !originalFileName.isEmpty() && originalFileName.indexOf(".") > 0
+				&& originalFileName.split("\\.").length == 2 && !originalFileName.split("\\.")[1].isEmpty()) {
+			String[] aux = originalFileName.split("\\.");
+			fileName = name + "." + aux[1];
+		} else {
+			fileName = name;
+		}
+		return fileName;
+	}
 
 }

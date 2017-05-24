@@ -35,6 +35,26 @@ public class TicketHeaderServiceImpl extends AbstractService implements TicketHe
 
 		return tickets;
 	}
+	
+	public List<TicketHeader> getTicketHeaderByUserAndTicketId(Long userId, Long ticketId) throws TicketHeaderException {
+
+		List<TicketHeader> tickets = null;
+		TicketHeader filter = new TicketHeader();
+		filter.setUserId(userId);
+		filter.setTicketId(ticketId);
+
+		logger.debug("TicketHeaderServiceImpl - getTicketHeaderByUserId: iniciando");
+
+		try {
+			tickets = dao.getItems(filter);
+		} catch (DAOException e) {
+			throw new TicketHeaderException(e);
+		}
+
+		logger.debug("TicketHeaderServiceImpl - getTicketHeaderByUserId: finalizando");
+
+		return tickets;
+	}
 
 	public TicketHeader createTicketHeader(TicketHeader ticketHeader) throws TicketHeaderException {
 		

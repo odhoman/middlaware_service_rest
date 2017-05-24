@@ -26,7 +26,7 @@ public class TicketHeaderController extends AbstractRestService {
 	private TicketHeaderService ticketHeaderService;
 	
 	@RequestMapping("/getTicketHeaders/{userId}")
-	public ResponseEntity<?> getTicketHeaders(@PathVariable("userId") long userId) {
+	public ResponseEntity<?> getTicketHeaders(@PathVariable("userId") Long userId) {
 
 		List<TicketHeader> lista = null;
 		
@@ -45,6 +45,30 @@ public class TicketHeaderController extends AbstractRestService {
 		}
 
 		logger.debug("getTicketHeaders - getTicketHeaders: Finalizando...");
+
+		return new ResponseEntity<List<TicketHeader>>(lista, HttpStatus.OK);
+	}
+	
+	@RequestMapping("/getTicketHeaders/{userId}/{ticketId}")
+	public ResponseEntity<?> getTicketHeaderByUserAndTicketId(@PathVariable("userId") Long userId, @PathVariable("ticketId") Long ticketId) {
+
+		List<TicketHeader> lista = null;
+		
+		logger.debug("TicketHeaderController - getTicketHeaderByUserAndTicketId: Iniciando...");
+
+		try {
+			lista = ticketHeaderService.getTicketHeaderByUserAndTicketId(userId,ticketId);
+		} catch (TicketHeaderException e) {
+			logger.error("TicketHeaderController - getTicketHeaderByUserAndTicketId: No se pudo obtener ningun ticket header con userId "+userId+" ticketId "+ticketId, e);
+			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener ningun ticket header con userId "+userId),
+					HttpStatus.BAD_REQUEST);
+		}catch (Exception e) {
+			logger.error("TicketHeaderController - getTicketHeaderByUserAndTicketId: No se pudo obtener ningun ticket header con userId "+userId+" ticketId "+ticketId, e);
+			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener ningun ticket header con userId "+userId),
+					HttpStatus.BAD_REQUEST);
+		}
+
+		logger.debug("getTicketHeaders - getTicketHeaderByUserAndTicketId: Finalizando...");
 
 		return new ResponseEntity<List<TicketHeader>>(lista, HttpStatus.OK);
 	}

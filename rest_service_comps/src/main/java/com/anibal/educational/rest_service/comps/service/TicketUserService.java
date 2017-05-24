@@ -19,4 +19,6 @@ public interface TicketUserService{
 	
 	public File getUserImage(Long userId) throws TicketUserException;
 	
+	public TicketUser performAuthentication(String userName, String pass) throws TicketUserException;
+	
 }

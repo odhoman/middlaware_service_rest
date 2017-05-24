@@ -295,13 +295,13 @@ public class TicketLine implements Cloneable {
 	/**
 	 * @return the pathImageId
 	 */
-	public String getPathImageId() {
+	public String getPathImage() {
 		return PathImageId;
 	}
 	/**
 	 * @param pathImageId the pathImageId to set
 	 */
-	public void setPathImageId(String pathImageId) {
+	public void setPathImage(String pathImageId) {
 		PathImageId = pathImageId;
 	}
 	
