@@ -37,11 +37,11 @@ public class TicketHeaderController extends AbstractRestService {
 		} catch (TicketHeaderException e) {
 			logger.error("TicketHeaderController - getTicketHeaders: No se pudo obtener ningun ticket header con userId "+userId, e);
 			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener ningun ticket header con userId "+userId),
-					HttpStatus.BAD_REQUEST);
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}catch (Exception e) {
 			logger.error("TicketHeaderController - getTicketHeaders: No se pudo obtener ningun ticket header con userId "+userId, e);
 			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener ningun ticket header con userId "+userId),
-					HttpStatus.BAD_REQUEST);
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		logger.debug("getTicketHeaders - getTicketHeaders: Finalizando...");
@@ -61,11 +61,11 @@ public class TicketHeaderController extends AbstractRestService {
 		} catch (TicketHeaderException e) {
 			logger.error("TicketHeaderController - getTicketHeaderByUserAndTicketId: No se pudo obtener ningun ticket header con userId "+userId+" ticketId "+ticketId, e);
 			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener ningun ticket header con userId "+userId),
-					HttpStatus.BAD_REQUEST);
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}catch (Exception e) {
 			logger.error("TicketHeaderController - getTicketHeaderByUserAndTicketId: No se pudo obtener ningun ticket header con userId "+userId+" ticketId "+ticketId, e);
 			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener ningun ticket header con userId "+userId),
-					HttpStatus.BAD_REQUEST);
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		logger.debug("getTicketHeaders - getTicketHeaderByUserAndTicketId: Finalizando...");
@@ -85,7 +85,7 @@ public class TicketHeaderController extends AbstractRestService {
 		} catch (TicketHeaderException e) {
 			logger.error("TicketHeaderController - createGasto: No se pudo crear el TicketHeader...", e);
 			return new ResponseEntity<Message>(new Message(1, "No se pudo crear el TicketHeader"),
-					HttpStatus.BAD_REQUEST);
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		logger.debug("TicketHeaderController - createTicket: Finalizado ");
@@ -104,7 +104,7 @@ public class TicketHeaderController extends AbstractRestService {
 		} catch (TicketHeaderException e) {
 			logger.error("TicketHeaderController - updateTicket: No se pudo actualizar el TicketHeader...", e);
 			return new ResponseEntity<Message>(new Message(1, "No se pudo actualizar el TicketHeader"),
-					HttpStatus.BAD_REQUEST);
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		Message message = new Message(1, "Ticket Header Actualizada");
@@ -122,9 +122,9 @@ public class TicketHeaderController extends AbstractRestService {
 		try {
 			ticketHeaderService.deleteTicketHeader(id);
 		} catch (TicketHeaderException e) {
-			logger.error("TicketHeaderController - deleteTicket: No se pudo eliminar la line...", e);
-			return new ResponseEntity<Message>(new Message(1, "No se pudo eliminar la line " + id),
-					HttpStatus.BAD_REQUEST);
+			logger.error("TicketHeaderController - deleteTicket: No se pudo eliminar la TicketHeader...", e);
+			return new ResponseEntity<Message>(new Message(1, "No se pudo eliminar la TicketHeader " + id),
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		Message message = new Message(1, "Ticket Header Eliminada");
 
@@ -143,9 +143,9 @@ public class TicketHeaderController extends AbstractRestService {
 		try {
 			line = ticketHeaderService.getTicketHeaderById(id);
 		} catch (TicketHeaderException e) {
-			logger.error("TicketHeaderController - getTicket: No se pudo obtener el line...", e);
-			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener el line"),
-					HttpStatus.BAD_REQUEST);
+			logger.error("TicketHeaderController - getTicket: No se pudo obtener el TicketHeader...", e);
+			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener el TicketHeader"),
+					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		logger.debug("TicketHeaderController - getTicket: Finalizando...");

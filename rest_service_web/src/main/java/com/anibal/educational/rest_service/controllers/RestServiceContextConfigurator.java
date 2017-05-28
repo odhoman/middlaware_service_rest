@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import com.anibal.educational.rest_service.comps.config.RestServiceConfig;
 import com.anibal.educational.rest_service.comps.dao.CabeceraGastoDao;
 import com.anibal.educational.rest_service.comps.dao.DetalleGastoDao;
+import com.anibal.educational.rest_service.comps.dao.TicketDistributionDao;
 import com.anibal.educational.rest_service.comps.dao.TicketHeaderDao;
 import com.anibal.educational.rest_service.comps.dao.TicketLineDao;
 import com.anibal.educational.rest_service.comps.dao.TicketUserDao;
@@ -15,6 +16,7 @@ import com.anibal.educational.rest_service.comps.service.CabeceraGastoService;
 import com.anibal.educational.rest_service.comps.service.DetalleGastoService;
 import com.anibal.educational.rest_service.comps.service.FileManagingService;
 import com.anibal.educational.rest_service.comps.service.ServiceRestData;
+import com.anibal.educational.rest_service.comps.service.TicketDistributionService;
 import com.anibal.educational.rest_service.comps.service.TicketHeaderService;
 import com.anibal.educational.rest_service.comps.service.TicketLineService;
 import com.anibal.educational.rest_service.comps.service.TicketUserService;
@@ -22,6 +24,7 @@ import com.anibal.educational.rest_service.comps.service.impl.CabeceraGastoServi
 import com.anibal.educational.rest_service.comps.service.impl.DetalleGastoServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.FileManagingServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.ServiceRestDataImpl;
+import com.anibal.educational.rest_service.comps.service.impl.TicketDistributionServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.TicketHeaderServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.TicketLineServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.TicketUserServiceImplImpl;
@@ -74,6 +77,11 @@ public class RestServiceContextConfigurator {
 	@Bean
 	public FileManagingService getFileManagingService(){
 		return new FileManagingServiceImpl(new FileSystemFileManagingDao());
+	}
+	
+	@Bean
+	public TicketDistributionService getTicketDistributionService(){
+		return new TicketDistributionServiceImpl(new TicketDistributionDao());
 	}
 }
 

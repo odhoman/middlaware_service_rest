@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.anibal.educational.rest_service.comps.dao.CabeceraGastoDao;
 import com.anibal.educational.rest_service.comps.dao.DetalleGastoDao;
+import com.anibal.educational.rest_service.comps.dao.TicketDistributionDao;
 import com.anibal.educational.rest_service.comps.dao.TicketHeaderDao;
 import com.anibal.educational.rest_service.comps.dao.TicketLineDao;
 import com.anibal.educational.rest_service.comps.dao.TicketUserDao;
@@ -46,6 +47,11 @@ public class AppConfigTest {
 	@Bean
 	public TicketHeaderDao getTicketHeaderDao(){
 		return new TicketHeaderDaoTestImp(getAbstractConfig());
+	}
+	
+	@Bean
+	public TicketDistributionDao getTicketDistributionDao(){
+		return new TicketDistributionDaoImpl(getAbstractConfig());
 	}
 	
 	@Bean
@@ -160,6 +166,28 @@ public class AppConfigTest {
 		}
 
 		public TicketLineDaoImpl(AbstractConfig config) {
+			super(config);
+		}
+		
+		@Override
+		protected DatabaseConnection getDatabaseConnection() {
+			DatabaseConnection dbc = new DatabaseConnection();
+			try {
+				dbc.setConfigure(new TstConfig());
+			} catch (Exception e) {
+				throw new ApplicationErrorException("No se pudo configurar el DBC de prueba");
+			}
+			return dbc;
+		}
+	}
+	
+	public class TicketDistributionDaoImpl extends TicketDistributionDao{
+		
+		public TicketDistributionDaoImpl() {
+			super();
+		}
+
+		public TicketDistributionDaoImpl(AbstractConfig config) {
 			super(config);
 		}
 		

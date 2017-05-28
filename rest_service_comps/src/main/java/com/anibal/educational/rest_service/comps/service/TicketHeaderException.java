@@ -19,6 +19,6 @@ public class TicketHeaderException extends RestServiceException{
 
 	public TicketHeaderException(String message, Throwable cause) {
 		super(message, cause);
-	}
+	} 
 
 }
