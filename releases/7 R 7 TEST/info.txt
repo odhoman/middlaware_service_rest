@@ -1,0 +1,49 @@
+05/06
+
+Estandarizacion de las fechas a unix timestamp
+
+--------------------------------------------------------
+
+28/05
+
+ABMC de Distribution
+
+--------------------------------------------------------
+
+24/05
+
+getTicketHeaders/{userId}/{ticketId}
+performAuthentication
+
+--------------------------------------------------------
+
+18/05
+
+Upload/Download images de lines
+
+--------------------------------------------------------
+
+
+14/05
+
+Servicio TicketUser, Ticket Line, Ticke Header, Upload/Download images
+
+--------------------------------------------------------
+
+30/04
+
+Se agregan Mensajes 
+
+getTicketHeaders por id de usuario
+getTicketLines por id de ticket
+getUser por id de usuario
+
+--------------------------------------------------------
+
+02/03
+
+Mensajes ABM para Gastos Cabecera, Detalle Cabecera
+
+---------------------------------------------------------
+
+
