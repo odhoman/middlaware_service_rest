@@ -2,6 +2,8 @@ package com.anibal.educational.rest_service.domain;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 public class TicketLine implements Cloneable {
 
 	private Long lineId;
@@ -18,16 +20,24 @@ public class TicketLine implements Cloneable {
 	private String proyectoDesc;
 	private String subproyectoDesc;
 	private String tareaDesc;
+	
+	@JsonSerialize(using = DateSerializer.class)
 	private Date gastosFecha;
 	private Double importe;
 	private String moneda;
 	private String monedaFuncional;
 	private Double tipoCambio;
+	
+	@JsonSerialize(using = DateSerializer.class)
 	private Date tipoCambioFecha;
 	private Long userId;
+	
+	@JsonSerialize(using = DateSerializer.class)
 	private Date creacionFecha;
 	private Long imageId;
 	private String PathImageId;
+	private String lineDesc;
+	
 	/**
 	 * @return the lineId
 	 */
@@ -319,10 +329,19 @@ public class TicketLine implements Cloneable {
 		this.imageId = imageId;
 	}
 	
+	public String getPathImageId() {
+		return PathImageId;
+	}
+	public void setPathImageId(String pathImageId) {
+		PathImageId = pathImageId;
+	}
+	public String getLineDesc() {
+		return lineDesc;
+	}
+	public void setLineDesc(String lineDesc) {
+		this.lineDesc = lineDesc;
+	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "TicketLine [lineId=" + lineId + ", ticketId=" + ticketId + ", tipoGasto=" + tipoGasto + ", proveedorId="
@@ -332,8 +351,9 @@ public class TicketLine implements Cloneable {
 				+ ", tareaDesc=" + tareaDesc + ", gastosFecha=" + gastosFecha + ", importe=" + importe + ", moneda="
 				+ moneda + ", monedaFuncional=" + monedaFuncional + ", tipoCambio=" + tipoCambio + ", tipoCambioFecha="
 				+ tipoCambioFecha + ", userId=" + userId + ", creacionFecha=" + creacionFecha + ", imageId=" + imageId
-				+ ", PathImageId=" + PathImageId + "]";
+				+ ", PathImageId=" + PathImageId + ", lineDesc=" + lineDesc + "]";
 	}
+	
 	@Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();

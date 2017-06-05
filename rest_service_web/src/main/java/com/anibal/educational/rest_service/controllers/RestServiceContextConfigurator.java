@@ -32,7 +32,7 @@ import com.odhoman.api.utilities.config.AbstractConfig;
 
 @Configuration
 public class RestServiceContextConfigurator {
-
+	
 	@Bean
 	public ServiceRestData getServiceRestData(){
 		return new ServiceRestDataImpl();

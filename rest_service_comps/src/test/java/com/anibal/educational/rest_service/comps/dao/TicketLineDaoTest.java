@@ -160,6 +160,7 @@ public class TicketLineDaoTest {
 		tl.setCreacionFecha(new Date());
 		tl.setImageId(23424L);
 		tl.setPathImage("PathImageId");
+		tl.setLineDesc("lineDesc");
 
 		logger.debug("Se actualizará el siguiente TicketLine con id " + tl.getUserId() + " con los siguientes valores");
 		logger.debug("==> " + tl);

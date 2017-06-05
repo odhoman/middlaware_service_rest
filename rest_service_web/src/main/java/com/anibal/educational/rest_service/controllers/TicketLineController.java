@@ -35,6 +35,7 @@ public class TicketLineController extends AbstractRestService {
 	@Autowired
 	private TicketLineService ticketLineService;
 	
+	
 	@RequestMapping("/getTicketLines/{ticketId}")
 	public ResponseEntity<?> getTicketLines(@PathVariable("ticketId") long ticketId) {
 
@@ -120,7 +121,7 @@ public class TicketLineController extends AbstractRestService {
 	}
 	
 	@RequestMapping("/getLine/{id}") 
-	public ResponseEntity<?> getLine(@PathVariable("id") long id) {
+	public ResponseEntity<TicketLine> getLine(@PathVariable("id") long id) {
 
 		logger.debug("TicketLineController - getLine: Iniciando...");
 
@@ -130,7 +131,7 @@ public class TicketLineController extends AbstractRestService {
 			line = ticketLineService.getTicketLine(id);
 		} catch (TicketLineServiceException e) {
 			logger.error("TicketLineController - getLine: No se pudo obtener el line...", e);
-			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener el line"),
+			return new ResponseEntity<TicketLine>(new TicketLine(),
 					HttpStatus.BAD_REQUEST);
 		}
 

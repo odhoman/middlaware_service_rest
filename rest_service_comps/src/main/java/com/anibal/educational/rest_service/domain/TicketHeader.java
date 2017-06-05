@@ -2,6 +2,8 @@ package com.anibal.educational.rest_service.domain;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 public class TicketHeader implements Cloneable{
 	
 	private Long ticketId;
@@ -11,13 +13,16 @@ public class TicketHeader implements Cloneable{
 	private String proyectoDesc;
 	private String subproyectoDesc;
 	private String tareaDesc;
+	@JsonSerialize(using = DateSerializer.class)	
 	private Date gastosFecha;
+	@JsonSerialize(using = DateSerializer.class)	
 	private Date creacionFecha;
 	private Double importe;
 	private Long userId;
 	private String moneda;
 	private String monedaFuncional;
 	private Double tipoCambio;
+	@JsonSerialize(using = DateSerializer.class)	
 	private Date tipoCambioFecha;
 	private Long employeeId;
 	private String employeeDesc;

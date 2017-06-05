@@ -2,6 +2,8 @@ package com.anibal.educational.rest_service.domain;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 public class TicketDistribution implements Cloneable{
 	
 	private Long distId;
@@ -9,6 +11,7 @@ public class TicketDistribution implements Cloneable{
 	private Long ticketId;
 	private String tipoGasto;
 	private String lineDesc;
+	@JsonSerialize(using = DateSerializer.class)	
 	private Date  gastosFecha;
 	private Long cantidad;
 	private String cbuDesc;
@@ -16,6 +19,7 @@ public class TicketDistribution implements Cloneable{
 	private String moneda;
 	private String monedaFuncional;
 	private Long userId;
+	@JsonSerialize(using = DateSerializer.class)	
 	private Date creacionFecha;
 	private Long lineNro;
 	
