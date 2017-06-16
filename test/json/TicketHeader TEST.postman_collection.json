@@ -1,0 +1,95 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TicketHeader TEST",
+		"_postman_id": "8af5f9b1-7ffe-b818-151d-9373dcf14679",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getTicketHeaders 852",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/getTicketHeaders/852",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getTicketHeaders 852 1",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/getTicketHeaders/852/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "createTicket 1000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/createTicket",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ticketId\": 1000,\r\n  \"proyectoId\": 3433,\r\n  \"subproyectoId\": 3433,\r\n  \"tareaId\": 3556,\r\n  \"proyectoDesc\": \"Sistemas\",\r\n  \"subproyectoDesc\": \"ERP\",\r\n  \"tareaDesc\": \"Instalaciones\",\r\n  \"gastosFecha\": 1493510400000,\r\n  \"creacionFecha\": 1493510400000,\r\n  \"importe\": 24000,\r\n  \"userId\": 3455,\r\n  \"moneda\": \"USD\",\r\n  \"monedaFuncional\": \"PES\",\r\n  \"tipoCambio\": 15.4,\r\n  \"tipoCambioFecha\": 1493510400000,\r\n  \"employeeId\": 9595,\r\n  \"employeeDesc\": \"Juan Perez\",\r\n  \"proveedorId\": 94944,\r\n  \"proveedorDesc\": \"Proveedor prueba\",\r\n  \"email\": \"proveedor.prueba@gmail.com\",\r\n  \"phoneNumber\": 2323232423423,\r\n  \"departamentId\": 222,\r\n  \"departamentDesc\": \"Departamento Desc\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getTicket 1000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/getTicket/1000",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "updateTicket 1000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/updateTicket/1000",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ticketId\": null,\r\n  \"proyectoId\": 3433,\r\n  \"subproyectoId\": 3433,\r\n  \"tareaId\": 3556,\r\n  \"proyectoDesc\": \"Sistemas Cambiados\",\r\n  \"subproyectoDesc\": \"32fff33\",\r\n  \"tareaDesc\": \"Instalaciones Cambiados\",\r\n  \"gastosFecha\": 1326136000000,\r\n  \"creacionFecha\": 1326136000000,\r\n  \"importe\": 84848,\r\n  \"userId\": 3455,\r\n  \"moneda\": \"USD\",\r\n  \"monedaFuncional\": \"PES\",\r\n  \"tipoCambio\": 15.4,\r\n  \"tipoCambioFecha\": 1326136000000,\r\n  \"employeeId\": 151,\r\n  \"employeeDesc\": null,\r\n  \"proveedorId\": 94944,\r\n  \"proveedorDesc\": \"Proveedor prueba cambiados\",\r\n  \"email\": null,\r\n  \"phoneNumber\": null,\r\n  \"departamentId\": null,\r\n  \"departamentDesc\": null\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deleteTicket 1000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/deleteTicket/1000",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

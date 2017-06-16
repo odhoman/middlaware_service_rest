@@ -1,0 +1,91 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TicketDistribution TEST",
+		"_postman_id": "913c735d-053b-aacf-fdac-4f5aa37246cb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createDistribution 1000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/createDistribution",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n\t\"distId\": 1000,\r\n\t\"lineId\": 1,\r\n    \"ticketId\": 1,\r\n    \"proyectoId\": 123,\r\n\t\"tipoGasto\": \"Tipo gasto\",\r\n\t\"lineDesc\": \"lineDesc\",\r\n\t\"gastosFecha\": 1493510400000,\r\n\t\"cantidad\": 5,\r\n\t\"cbuDesc\": \"123123123123\",\r\n\t\"importe\": 43345345.21,\r\n    \"moneda\": \"MONEDA\",\r\n    \"monedaFuncional\": \"MON_FUN\",\r\n\t\"userId\": 852,\r\n\t\"creacionFecha\": 1493510400000,\r\n\t\"lineNro\": 3\r\n\t}\r\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "updateDistribution 1000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/updateDistribution/1000",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n\t\"distId\": 1000,\r\n\t\"lineId\": 1,\r\n    \"ticketId\": 1,\r\n    \"proyectoId\": 123,\r\n\t\"tipoGasto\": \"Tipo gasto cambiado\",\r\n\t\"lineDesc\": \"lineDesc cambiado\",\r\n\t\"gastosFecha\": 1493110400000,\r\n\t\"cantidad\": 5,\r\n\t\"cbuDesc\": \"251\",\r\n\t\"importe\": 9999.21,\r\n    \"moneda\": \"MONED 2\",\r\n    \"monedaFuncional\": \"mON F 2\",\r\n\t\"userId\": 12,\r\n\t\"creacionFecha\": 1493110400000,\r\n\t\"lineNro\": 4\r\n\t}\r\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getDistribution 1000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/getDistribution/1000",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n\t\"distId\": 1000,\r\n\t\"lineId\": 1,\r\n    \"ticketId\": 1,\r\n    \"proyectoId\": 123,\r\n\t\"tipoGasto\": \"Tipo gasto cambiado\",\r\n\t\"lineDesc\": \"lineDesc cambiado\",\r\n\t\"gastosFecha\": 1493510400000,\r\n\t\"cantidad\": 5,\r\n\t\"cbuDesc\": \"251\",\r\n\t\"importe\": 9999.21,\r\n    \"moneda\": \"MONED 2\",\r\n    \"monedaFuncional\": \"mON F 2\",\r\n\t\"userId\": 12,\r\n\t\"creacionFecha\": 1493510400000,\r\n\t\"lineNro\": 4\r\n\t}\r\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deleteDistribution 1000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/deleteDistribution/1000",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

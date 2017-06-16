@@ -1,0 +1,142 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TicketUser TEST",
+		"_postman_id": "9f7ade9d-0e87-acb7-2947-f2d32728ea78",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createUser 3000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/createUser",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 3000,\n  \"userName\": \"lsalinas\",\n  \"userFirstame\": \"luis\",\n  \"userLastName\": \"salinas\",\n  \"userEmail\": \"asdfads@gmail.com\",\n  \"userPhoneNumber\": \"12156545654\",\n  \"hireDateStart\": 1493510400000,\n  \"hireDateEnd\": 1493510400000,\n  \"street\": \"calle\",\n  \"city\": \"ciudad\",\n  \"state\": \"BUenos Aires\",\n  \"zipCode\": \"1657\",\n  \"country\": \"Argentina\",\n  \"employeeId\": 5,\n  \"employeeDesc\": \"empleado comun\",\n  \"imageId\": 3,\n  \"pathImage\": \"path\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getUser 3000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/getUser/3000",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "uploadUserImage 3000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/uploadUserImage/3000",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "004.jpg"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "downloadFile 3000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/downloadUserImage/3000",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "Desert.jpg"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser 3000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/updateUser/3000",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 3000,\n  \"userName\": \"wqwqdqwdqwd\",\n  \"userFirstame\": \"dq3dq3dq3\",\n  \"userLastName\": \"d3dd\",\n  \"userEmail\": \"232323232@gmail.com\",\n  \"userPhoneNumber\": \"12156545654\",\n  \"hireDateStart\": 1423510400000,\n  \"hireDateEnd\": 1423510400000,\n  \"street\": \"calle cambiad222a\",\n  \"city\": \"ciudad2222\",\n  \"state\": \"BUenos Aires222\",\n  \"zipCode\": \"1652227\",\n  \"country\": \"Uruguay\",\n  \"employeeId\": 5,\n  \"employeeDesc\": \"empleado comun cambiado\",\n  \"imageId\": 3,\n  \"pathImage\": \"path\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser 3000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/deleteUser/3000",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "performAuthentication",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/performAuthentication",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"user\": \"anibal\",\t\r\n\"pass\": \"3dc612b769e82d3e4e70ecf4b3343128\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

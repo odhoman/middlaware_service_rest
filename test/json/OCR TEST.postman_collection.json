@@ -1,0 +1,52 @@
+{
+	"variables": [],
+	"info": {
+		"name": "OCR TEST",
+		"_postman_id": "756a621d-639f-b411-316b-12ad974c7942",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Text Detection Anibal",
+			"request": {
+				"url": {
+					"raw": "https://vision.googleapis.com/v1/images:annotate?key=AIzaSyBwgcUR268DnLjq4_oW6iq8ARWFP9hwenc",
+					"protocol": "https",
+					"host": [
+						"vision",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"v1",
+						"images:annotate"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "AIzaSyBwgcUR268DnLjq4_oW6iq8ARWFP9hwenc",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"requests\": [\r\n    {\r\n      \"image\": {\r\n        \"content\": \"iVBORw0KGgoAAAANSUhEUgAAAMoAAAA3CAIAAADCC0I4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPkSURBVHhe7ZbbdeMwDERTVwpyPa5GzbiYLCmRAAgOJCo2Nj9z/5Z4j+bE+/VDSBq0F0mE9iKJ0F4kEdqLJEJ7kURoL5II7UUSob1IIrQXSYT2IonQXiQR2oskQnuRRGgvkgjtRRKhvUgitBdJhPYiidBeJJEle72e31+exxYEjohle7RIx2dMCZXv56uFT6iV07yIcUzc319VBqANTQMX/n4+7YNf0PevjaAEyrUYUwMoS8taluxd1v966f5+uTgiIQ1IsldMuyxf377TtfaK/bTBGJtiW1+UtjC4FG44pRegkOdtKj0DjB4r9II7kr3DjR/HvvO8Go7IMf5byPFjIHiOUbVWKyoyJhC5dC2ghKt5pXNUgErqoHGBcIDu7FeWEt8fqnlb4ndJs5fcPacHMoZKBWwPscEduUqZ/nbNdTW8BZvECuyUA1xED624biXox8efXyJviXxxwOf5hL3kECOKyAEv0dNNGLU5ofrgdT4GsteF32WMuk0uvk4pm9sdFY0hXNL9pScDTCepOr9ertBwf1pT+AMk2UvFuLjc1IA2J2yPPU2K4BzEbiCzoZ1WutV/RpuEChy0akupKE+qhrsXpO+gAaZJK9OXZZGPkmWt3uYX9oqRK9BlA0iZ6KMi9NPoqIWySrOXFg4b7E2iTfrWwefRpYRSMXYs9GqcPqRYTIujbHrwAJGPGpyeQc5fr99cDtqElFRNkl5rqnV7zYUSiTYJFTgYtjooFf1JT24NcLrGHbJUX2t68OhE7VffgvUz+JsfRxPXGtAmwAg7sKSb2kv77C8aiDYJFTgoZX71UmGe9Oraek4f93FIUNb6jcj1zS+ZSJK9Zi0GoI6gDeb1fIwrwHYRxl7mCzye5mNHm4QKHJSwX90/GV0qLv30DllVqkwzP7cCu5VHlJvFur3i2yViFxc1gFSwIHjtbFt/ndx1ttvMYC+ttGOjTeQmuGGpmsYDx5mJPnZ2xuyuwn2R/zOfsBdWXWX09/V8947b7JReMrWkwYSw2DHaC24TfZnTKXZHAS4bXirvscSuJN4InCXpYKUklu2lh4SixDeaQHuCX6IBP//R4dgCyBOvN7LnoQGmyvTya0ah+j6fNLcWUEQVGHrpM5hQkLh2a0/h9qcSfZIle5m7O8fmRm3F7+6rZ5FAf09p6oZNYlrgh3B50qA0lny0ijsIHT3Nm/rAq3tnNHUEHmTwHXB+W90dlMiN/9oTchfaiyRCe5FEaC+SCO1FEqG9SCK0F0mE9iKJ0F4kEdqLJEJ7kURoL5II7UUSob1IIrQXSYT2IonQXiQR2oskQnuRRGgvkgjtRdL4+fkHpz7GLguVVrgAAAAASUVORK5CYII=\"\r\n      },\r\n      \"features\": [\r\n        {\r\n          \"type\": \"TEXT_DETECTION\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

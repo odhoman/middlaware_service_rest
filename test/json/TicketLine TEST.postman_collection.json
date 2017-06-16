@@ -1,0 +1,149 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TicketLine TEST",
+		"_postman_id": "af0d53a8-78c9-af07-9842-fbfc67c012ee",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getTicketLines 2342",
+			"request": {
+				"url": "http://localhost:8080/rest_service_web/getTicketLines/2342",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "createLine 2000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/createLine",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"lineId\": 2000,\r\n\t\"ticketId\": 100,\r\n\t\"tipoGasto\":\"tipo gasto\",\r\n\t\"proveedorId\":\"2345\",\r\n\t\"proveedorDesc\":\"Proveedor Desc\",\t\r\n\t\"ciudadId\":\"944\",\r\n\t\"paisId\":1,\r\n\t\"ciudadDesc\":\"Buenos Aires\",\r\n\t\"paisDesc\":\"Argentina\",\r\n\t\"proyectoId\": 3433,\r\n\t\"subproyectoId\": 3433,\r\n\t\"tareaId\": 3556,            \r\n\t\"proyectoDesc\": \"Sistemas\",\r\n\t\"subproyectoDesc\": \"ERP\",\r\n\t\"tareaDesc\": \"Instalaciones\",\r\n\t\"gastosFecha\": 1493510400000,\r\n\t\"importe\": 24000,\r\n\t\"moneda\": \"USD\",\r\n\t\"monedaFuncional\": \"PES\",\r\n\t\"tipoCambio\": 15.4,\r\n\t\"tipoCambioFecha\": 1493510400000,\r\n\t\"userId\": 3455,\r\n\t\"creacionFecha\": 1493510400000,\r\n\t\"imageId\": 12342,\r\n\t\"pathImageId\": \"ec2-user@ec2-54-186-226-131.us-west-2.compute.amazonaws.com/tickets/factura\",\r\n\t\"lineDesc\":\"line_Desc\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "uploadTicketLineImage 2000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/uploadTicketLineImage/2000",
+				"method": "POST",
+				"header": [
+					{
+						"key": "line",
+						"value": "",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "Desert.jpg"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "downloadTicketLineImage 2000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/downloadTicketLineImage/2000",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "Desert.jpg"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getLine 2000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/getLine/2000",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"lineId\": null,\r\n\t\"ticketId\": 1000,\r\n\t\"tipoGasto\":\"tipo gasto cambiado\",\r\n\t\"proveedorId\":23453,\r\n\t\"ciudadId\":777,\r\n\t\"paisId\":1,\r\n\t\"ciudadDesc\":\"Cordoba\",\r\n\t\"paisDesc\":\"Argentina\",\r\n\t\"proyectoId\": 343323,\r\n\t\"subproyectoId\": 3234234,\r\n\t\"tareaId\": 4343,            \r\n\t\"proyectoDesc\": \"Compras\",\r\n\t\"subproyectoDesc\": \"ERP33\",\r\n\t\"tareaDesc\": \"Instalaciones 2\",\r\n\t\"gastosFecha\": \"2016-06-17T04:00:00Z\",\r\n\t\"importe\": 9999,\r\n\t\"moneda\": \"ARS\",\r\n\t\"monedaFuncional\": \"EUR\",\r\n\t\"tipoCambio\": 25.4,\r\n\t\"tipoCambioFecha\": \"2016-06-17T04:00:00Z\",\r\n\t\"userId\": 3455,\r\n\t\"creacionFecha\": \"2016-06-17T04:00:00Z\",\r\n\t\"imageId\": 12342,\r\n\t\"pathImageId\": \"Nuevo PATH\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "updateLine 2000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/updateLine/2000",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"lineId\": null,\r\n\t\"ticketId\": 1000,\r\n\t\"tipoGasto\":\"tipo gasto cambiado\",\r\n\t\"proveedorId\":23453,\r\n\t\"proveedorDesc\":\"Proveedor Desc Cambiado\",\t\r\n\t\"ciudadId\":777,\r\n\t\"paisId\":1,\r\n\t\"ciudadDesc\":\"Cordoba\",\r\n\t\"paisDesc\":\"Argentina\",\r\n\t\"proyectoId\": 343323,\r\n\t\"subproyectoId\": 3234234,\r\n\t\"tareaId\": 4343,            \r\n\t\"proyectoDesc\": \"Compras\",\r\n\t\"subproyectoDesc\": \"ERP33\",\r\n\t\"tareaDesc\": \"Instalaciones 2\",\r\n\t\"gastosFecha\": 1593510400000,\r\n\t\"importe\": 9999,\r\n\t\"moneda\": \"ARS\",\r\n\t\"monedaFuncional\": \"EUR\",\r\n\t\"tipoCambio\": 25.4,\r\n\t\"tipoCambioFecha\": 1593510400000,\r\n\t\"userId\": 3455,\r\n\t\"creacionFecha\": 1593510400000,\r\n\t\"imageId\": 12342,\r\n\t\"pathImageId\": \"Nuevo PATH\",\r\n\t \"lineDesc\": \"nueva_line_Desc\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deleteLine 2000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/deleteLine/2000",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
