@@ -10,6 +10,7 @@ public class TicketLine implements Cloneable {
 	private Long ticketId;
 	private String tipoGasto;
 	private Long proveedorId;
+	private String proveedorDesc;
 	private Long ciudadId;
 	private Long paisId;
 	private String ciudadDesc;
@@ -342,16 +343,25 @@ public class TicketLine implements Cloneable {
 		this.lineDesc = lineDesc;
 	}
 	
+	
+	public String getProveedorDesc() {
+		return proveedorDesc;
+	}
+	public void setProveedorDesc(String proveedorDesc) {
+		this.proveedorDesc = proveedorDesc;
+	}
+
 	@Override
 	public String toString() {
 		return "TicketLine [lineId=" + lineId + ", ticketId=" + ticketId + ", tipoGasto=" + tipoGasto + ", proveedorId="
-				+ proveedorId + ", ciudadId=" + ciudadId + ", paisId=" + paisId + ", ciudadDesc=" + ciudadDesc
-				+ ", paisDesc=" + paisDesc + ", proyectoId=" + proyectoId + ", subproyectoId=" + subproyectoId
-				+ ", tareaId=" + tareaId + ", proyectoDesc=" + proyectoDesc + ", subproyectoDesc=" + subproyectoDesc
-				+ ", tareaDesc=" + tareaDesc + ", gastosFecha=" + gastosFecha + ", importe=" + importe + ", moneda="
-				+ moneda + ", monedaFuncional=" + monedaFuncional + ", tipoCambio=" + tipoCambio + ", tipoCambioFecha="
-				+ tipoCambioFecha + ", userId=" + userId + ", creacionFecha=" + creacionFecha + ", imageId=" + imageId
-				+ ", PathImageId=" + PathImageId + ", lineDesc=" + lineDesc + "]";
+				+ proveedorId + ", proveedorDesc=" + proveedorDesc + ", ciudadId=" + ciudadId + ", paisId=" + paisId
+				+ ", ciudadDesc=" + ciudadDesc + ", paisDesc=" + paisDesc + ", proyectoId=" + proyectoId
+				+ ", subproyectoId=" + subproyectoId + ", tareaId=" + tareaId + ", proyectoDesc=" + proyectoDesc
+				+ ", subproyectoDesc=" + subproyectoDesc + ", tareaDesc=" + tareaDesc + ", gastosFecha=" + gastosFecha
+				+ ", importe=" + importe + ", moneda=" + moneda + ", monedaFuncional=" + monedaFuncional
+				+ ", tipoCambio=" + tipoCambio + ", tipoCambioFecha=" + tipoCambioFecha + ", userId=" + userId
+				+ ", creacionFecha=" + creacionFecha + ", imageId=" + imageId + ", PathImageId=" + PathImageId
+				+ ", lineDesc=" + lineDesc + "]";
 	}
 	
 	@Override

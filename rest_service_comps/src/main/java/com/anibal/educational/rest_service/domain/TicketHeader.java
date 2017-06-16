@@ -26,8 +26,8 @@ public class TicketHeader implements Cloneable{
 	private Date tipoCambioFecha;
 	private Long employeeId;
 	private String employeeDesc;
-	private Long supplierId;
-	private String supplierDesc;
+	private Long proveedorId;
+	private String proveedorDesc;
 	private String email;
 	private String phoneNumber;
 	private Long departamentId;
@@ -136,18 +136,6 @@ public class TicketHeader implements Cloneable{
 	public void setEmployeeDesc(String employeeDesc) {
 		this.employeeDesc = employeeDesc;
 	}
-	public Long getSupplierId() {
-		return supplierId;
-	}
-	public void setSupplierId(Long supplierId) {
-		this.supplierId = supplierId;
-	}
-	public String getSupplierDesc() {
-		return supplierDesc;
-	}
-	public void setSupplierDesc(String supplierDesc) {
-		this.supplierDesc = supplierDesc;
-	}
 	public String getEmail() {
 		return email;
 	}
@@ -160,10 +148,19 @@ public class TicketHeader implements Cloneable{
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-	
-	
-    /**
+    public Long getProveedorId() {
+		return proveedorId;
+	}
+	public void setProveedorId(Long proveedorId) {
+		this.proveedorId = proveedorId;
+	}
+	public String getProveedorDesc() {
+		return proveedorDesc;
+	}
+	public void setProveedorDesc(String proveedorDesc) {
+		this.proveedorDesc = proveedorDesc;
+	}
+	/**
 	 * @return the departamentId
 	 */
 	public Long getDepartamentId() {
@@ -192,9 +189,6 @@ public class TicketHeader implements Cloneable{
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "TicketHeader [ticketId=" + ticketId + ", proyectoId=" + proyectoId + ", subproyectoId=" + subproyectoId
@@ -202,11 +196,10 @@ public class TicketHeader implements Cloneable{
 				+ ", tareaDesc=" + tareaDesc + ", gastosFecha=" + gastosFecha + ", creacionFecha=" + creacionFecha
 				+ ", importe=" + importe + ", userId=" + userId + ", moneda=" + moneda + ", monedaFuncional="
 				+ monedaFuncional + ", tipoCambio=" + tipoCambio + ", tipoCambioFecha=" + tipoCambioFecha
-				+ ", employeeId=" + employeeId + ", employeeDesc=" + employeeDesc + ", supplierId=" + supplierId
-				+ ", supplierDesc=" + supplierDesc + ", email=" + email + ", phoneNumber=" + phoneNumber
+				+ ", employeeId=" + employeeId + ", employeeDesc=" + employeeDesc + ", proveedorId=" + proveedorId
+				+ ", proveedorDesc=" + proveedorDesc + ", email=" + email + ", phoneNumber=" + phoneNumber
 				+ ", departamentId=" + departamentId + ", departamentDesc=" + departamentDesc + "]";
 	}
 	
-    
 
 }

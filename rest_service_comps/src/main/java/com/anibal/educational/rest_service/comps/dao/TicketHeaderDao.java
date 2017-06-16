@@ -53,8 +53,8 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 		fields.add("TIPO_CAMBIO_FECHA");
 		fields.add("EMPLOYEE_ID");
 		fields.add("EMPLOYEE_DESC");
-		fields.add("SUPPLIER_ID");
-		fields.add("SUPPLIER_DESC");
+		fields.add("PROVEEDOR_ID");
+		fields.add("PROVEEDOR_DESC");
 		fields.add("EMAIL");
 		fields.add("PHONE_NUMBER");
 		fields.add("DEPARTMENT_ID");
@@ -90,8 +90,8 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 		fields.add(item.getTipoCambioFecha());
 		fields.add(item.getEmployeeId());
 		fields.add(item.getEmployeeDesc());
-		fields.add(item.getSupplierId());
-		fields.add(item.getSupplierDesc());
+		fields.add(item.getProveedorId());
+		fields.add(item.getProveedorDesc());
 		fields.add(item.getEmail());
 		fields.add(item.getPhoneNumber());
 		fields.add(item.getDepartamentId());
@@ -170,12 +170,12 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 			fieldsSelectConditions.add("EMPLOYEE_DESC");
 		}
 
-		if (item.getSupplierId() != null) {
-			fieldsSelectConditions.add("SUPPLIER_ID");
+		if (item.getProveedorId() != null) {
+			fieldsSelectConditions.add("PROVEEDOR_ID");
 		}
 
-		if (isNotEmpty(item.getSupplierDesc())) {
-			fieldsSelectConditions.add("SUPPLIER_DESC");
+		if (isNotEmpty(item.getProveedorDesc())) {
+			fieldsSelectConditions.add("PROVEEDOR_DESC");
 		}
 
 		if (isNotEmpty(item.getEmail())) {
@@ -230,8 +230,8 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 		fields.add(item.getTipoCambioFecha());
 		fields.add(item.getEmployeeId());
 		fields.add(item.getEmployeeDesc());
-		fields.add(item.getSupplierId());
-		fields.add(item.getSupplierDesc());
+		fields.add(item.getProveedorId());
+		fields.add(item.getProveedorDesc());
 		fields.add(item.getEmail());
 		fields.add(item.getPhoneNumber());
 		fields.add(item.getDepartamentId());
@@ -265,8 +265,8 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 		fields.add("TIPO_CAMBIO_FECHA");
 		fields.add("EMPLOYEE_ID");
 		fields.add("EMPLOYEE_DESC");
-		fields.add("SUPPLIER_ID");
-		fields.add("SUPPLIER_DESC");
+		fields.add("PROVEEDOR_ID");
+		fields.add("PROVEEDOR_DESC");
 		fields.add("EMAIL");
 		fields.add("PHONE_NUMBER");
 		fields.add("DEPARTMENT_ID");
@@ -356,12 +356,12 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 			fieldsSelectConditions.add("EMPLOYEE_DESC");
 		}
 
-		if (filter.getSupplierId() != null) {
-			fieldsSelectConditions.add("SUPPLIER_ID");
+		if (filter.getProveedorId() != null) {
+			fieldsSelectConditions.add("PROVEEDOR_ID");
 		}
 
-		if (isNotEmpty(filter.getSupplierDesc())) {
-			fieldsSelectConditions.add("SUPPLIER_DESC");
+		if (isNotEmpty(filter.getProveedorDesc())) {
+			fieldsSelectConditions.add("PROVEEDOR_DESC");
 		}
 
 		if (isNotEmpty(filter.getEmail())) {
@@ -410,8 +410,8 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 		fields.add(filter.getTipoCambioFecha());
 		fields.add(filter.getEmployeeId());
 		fields.add(filter.getEmployeeDesc());
-		fields.add(filter.getSupplierId());
-		fields.add(filter.getSupplierDesc());
+		fields.add(filter.getProveedorId());
+		fields.add(filter.getProveedorDesc());
 		fields.add(filter.getEmail());
 		fields.add(filter.getPhoneNumber());
 		fields.add(filter.getDepartamentId());
@@ -442,8 +442,8 @@ public class TicketHeaderDao extends RestServiceAbstractAbmDAO<TicketHeader, Tic
 		t.setTipoCambioFecha(getValueOrNull(rs.getDate("TIPO_CAMBIO_FECHA"),rs));
 		t.setEmployeeId(getValueOrNull(rs.getLong("EMPLOYEE_ID"),rs));
 		t.setEmployeeDesc(rs.getString("EMPLOYEE_DESC"));
-		t.setSupplierId(getValueOrNull(rs.getLong("SUPPLIER_ID"),rs));
-		t.setSupplierDesc(rs.getString("SUPPLIER_DESC"));
+		t.setProveedorId(getValueOrNull(rs.getLong("PROVEEDOR_ID"),rs));
+		t.setProveedorDesc(rs.getString("PROVEEDOR_DESC"));
 		t.setEmail(rs.getString("EMAIL"));
 		t.setPhoneNumber(rs.getString("PHONE_NUMBER"));
 		t.setDepartamentId(getValueOrNull(rs.getLong("DEPARTMENT_ID"),rs));

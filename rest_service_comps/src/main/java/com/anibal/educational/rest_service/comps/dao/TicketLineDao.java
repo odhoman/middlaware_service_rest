@@ -29,7 +29,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 	@Override
 	protected List<String> getInsertFields(TicketLine item) {
 
-		return Arrays.asList("LINE_ID", "TICKET_ID", "TIPO_GASTO", "PROVEEDOR_ID", "CIUDAD_ID", "PAIS_ID",
+		return Arrays.asList("LINE_ID", "TICKET_ID", "TIPO_GASTO", "PROVEEDOR_ID", "PROVEEDOR_DESC", "CIUDAD_ID", "PAIS_ID",
 				"CIUDAD_DESC", "PAIS_DESC", "PROYECTO_ID", "SUBPROYECTO_ID", "TAREA_ID", "PROYECTO_DESC",
 				"SUBPROYECTO_DESC", "TAREA_DESC", "GASTOS_FECHA", "IMPORTE", "MONEDA", "MONEDA_FUNCIONAL",
 				"TIPO_CAMBIO", "TIPO_CAMBIO_FECHA", "USER_ID", "CREACION_FECHA", "IMAGE_ID", "PATH_IMAGE_ID","LINE_DESC");
@@ -47,6 +47,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(item.getTicketId());
 		fields.add(item.getTipoGasto());
 		fields.add(item.getProveedorId());
+		fields.add(item.getProveedorDesc());
 		fields.add(item.getCiudadId());
 		fields.add(item.getPaisId());
 		fields.add(item.getCiudadDesc());
@@ -90,6 +91,10 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		if (item.getProveedorId() != null) {
 			fieldsUpdate.add("PROVEEDOR_ID");
 		}
+		
+		if (isNotEmpty(item.getProveedorDesc())) {
+			fieldsUpdate.add("PROVEEDOR_DESC");
+		}		
 		
 		if (item.getCiudadId() != null) {
 			fieldsUpdate.add("CIUDAD_ID");
@@ -198,6 +203,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(item.getTicketId());
 		fields.add(item.getTipoGasto());
 		fields.add(item.getProveedorId());
+		fields.add(item.getProveedorDesc());
 		fields.add(item.getCiudadId());
 		fields.add(item.getPaisId());
 		fields.add(item.getCiudadDesc());
@@ -229,7 +235,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 
 	@Override
 	protected List<String> getSelectFields() {
-		return Arrays.asList("LINE_ID", "TICKET_ID", "TIPO_GASTO", "PROVEEDOR_ID", "CIUDAD_ID", "PAIS_ID",
+		return Arrays.asList("LINE_ID", "TICKET_ID", "TIPO_GASTO", "PROVEEDOR_ID", "PROVEEDOR_DESC", "CIUDAD_ID", "PAIS_ID",
 				"CIUDAD_DESC", "PAIS_DESC", "PROYECTO_ID", "SUBPROYECTO_ID", "TAREA_ID", "PROYECTO_DESC",
 				"SUBPROYECTO_DESC", "TAREA_DESC", "GASTOS_FECHA", "IMPORTE", "MONEDA", "MONEDA_FUNCIONAL",
 				"TIPO_CAMBIO", "TIPO_CAMBIO_FECHA", "USER_ID", "CREACION_FECHA", "IMAGE_ID", "PATH_IMAGE_ID","LINE_DESC");
@@ -260,6 +266,10 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		if (filter.getProveedorId() != null) {
 			fieldsSelectConditions.add("PROVEEDOR_ID");
 		}
+		
+		if (isNotEmpty(filter.getProveedorDesc())) {
+			fieldsSelectConditions.add("PROVEEDOR_DESC");
+		}	
 		
 		if (filter.getCiudadId() != null) {
 			fieldsSelectConditions.add("CIUDAD_ID");
@@ -360,6 +370,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(filter.getTicketId());
 		fields.add(filter.getTipoGasto());
 		fields.add(filter.getProveedorId());
+		fields.add(filter.getProveedorDesc());		
 		fields.add(filter.getCiudadId());
 		fields.add(filter.getPaisId());
 		fields.add(filter.getCiudadDesc());
@@ -394,6 +405,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		tl.setTicketId(getValueOrNull(rs.getLong("TICKET_ID"),rs));
 		tl.setTipoGasto(rs.getString("TIPO_GASTO"));
 		tl.setProveedorId(getValueOrNull(rs.getLong("PROVEEDOR_ID"),rs));
+		tl.setProveedorDesc(rs.getString("PROVEEDOR_DESC"));
 		tl.setCiudadId(getValueOrNull(rs.getLong("CIUDAD_ID"),rs));
 		tl.setPaisId(getValueOrNull(rs.getLong("PAIS_ID"),rs));
 		tl.setCiudadDesc(rs.getString("CIUDAD_DESC"));

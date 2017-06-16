@@ -153,8 +153,8 @@ public class TicketHeaderDaoTest {
 		t.setTipoCambioFecha(new Date());
 		t.setEmployeeId(5453L);
 		t.setEmployeeDesc("EMPLOYEE_DESC");
-		t.setSupplierId(85L);
-		t.setSupplierDesc("SUPPLIER_DESC");
+		t.setProveedorId(85L);
+		t.setProveedorDesc("SUPPLIER_DESC");
 		t.setEmail("EMAIL");
 		t.setPhoneNumber("PHONE_NUMBER");
 		t.setDepartamentId(55155L);

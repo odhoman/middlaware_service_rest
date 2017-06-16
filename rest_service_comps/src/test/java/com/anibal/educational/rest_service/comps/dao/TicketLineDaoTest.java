@@ -104,6 +104,7 @@ public class TicketLineDaoTest {
 		tl.setTicketId(2342L);
 		tl.setTipoGasto("asdfa");
 		tl.setProveedorId(42342L);
+		tl.setProveedorDesc("proveedor desc");
 		tl.setCiudadId(855L);
 		tl.setPaisId(55365L);
 		tl.setCiudadDesc("ciudad");
