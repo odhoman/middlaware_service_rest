@@ -71,28 +71,28 @@ public class RestServiceController extends AbstractRestService {
 		return new ResponseEntity<CabeceraGasto>(gasto, HttpStatus.OK);
 	}
 
-	@RequestMapping("/getGasto/{id}") // GET
-	public ResponseEntity<?> getGasto(@PathVariable("id") long id) {
-
-		logger.debug("RestServiceController - getGasto: Iniciando...");
-
-		CabeceraGasto obtained = null;
-		CabeceraGasto filtro = new CabeceraGasto();
-		filtro.setGastoId(id);
-
-		try {
-			obtained = cabeceraGastoService.getCabeceraGasto(filtro);
-		} catch (CabeceraGastoException e) {
-			logger.error("RestServiceController - createGasto: No se pudo crear la cabecera gasto...", e);
-			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener la cabecera gasto"),
-					HttpStatus.BAD_REQUEST);
-		}
-
-		logger.debug("RestServiceController - getGasto: Finalizando...");
-
-		return new ResponseEntity<CabeceraGasto>(obtained, HttpStatus.OK);
-
-	}
+//	@RequestMapping("/getGasto/{id}") // GET
+//	public ResponseEntity<?> getGasto(@PathVariable("id") long id) {
+//
+//		logger.debug("RestServiceController - getGasto: Iniciando...");
+//
+//		CabeceraGasto obtained = null;
+//		CabeceraGasto filtro = new CabeceraGasto();
+//		filtro.setGastoId(id);
+//
+//		try {
+//			obtained = cabeceraGastoService.getCabeceraGasto(filtro);
+//		} catch (CabeceraGastoException e) {
+//			logger.error("RestServiceController - createGasto: No se pudo crear la cabecera gasto...", e);
+//			return new ResponseEntity<Message>(new Message(1, "No se pudo obtener la cabecera gasto"),
+//					HttpStatus.BAD_REQUEST);
+//		}
+//
+//		logger.debug("RestServiceController - getGasto: Finalizando...");
+//
+//		return new ResponseEntity<CabeceraGasto>(obtained, HttpStatus.OK);
+//
+//	}
 
 	@RequestMapping(value = "/deleteGasto/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteGasto(@PathVariable("id") Long id) {
