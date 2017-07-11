@@ -32,7 +32,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"lineId\": 2000,\r\n\t\"ticketId\": 100,\r\n\t\"tipoGasto\":\"tipo gasto\",\r\n\t\"proveedorId\":\"2345\",\r\n\t\"proveedorDesc\":\"Proveedor Desc\",\t\r\n\t\"ciudadId\":\"944\",\r\n\t\"paisId\":1,\r\n\t\"ciudadDesc\":\"Buenos Aires\",\r\n\t\"paisDesc\":\"Argentina\",\r\n\t\"proyectoId\": 3433,\r\n\t\"subproyectoId\": 3433,\r\n\t\"tareaId\": 3556,            \r\n\t\"proyectoDesc\": \"Sistemas\",\r\n\t\"subproyectoDesc\": \"ERP\",\r\n\t\"tareaDesc\": \"Instalaciones\",\r\n\t\"gastosFecha\": 1493510400000,\r\n\t\"importe\": 24000,\r\n\t\"moneda\": \"USD\",\r\n\t\"monedaFuncional\": \"PES\",\r\n\t\"tipoCambio\": 15.4,\r\n\t\"tipoCambioFecha\": 1493510400000,\r\n\t\"userId\": 3455,\r\n\t\"creacionFecha\": 1493510400000,\r\n\t\"imageId\": 12342,\r\n\t\"pathImageId\": \"ec2-user@ec2-54-186-226-131.us-west-2.compute.amazonaws.com/tickets/factura\",\r\n\t\"lineDesc\":\"line_Desc\"\r\n}"
+					"raw": "{\r\n\t\"lineId\": 2000,\r\n\t\"ticketId\": 100,\r\n\t\"tipoGasto\":\"tipo gasto\",\r\n\t\"proveedorId\":\"2345\",\r\n\t\"proveedorDesc\":\"Proveedor Desc\",\t\r\n\t\"ciudadId\":\"944\",\r\n\t\"paisId\":1,\r\n\t\"ciudadDesc\":\"Buenos Aires\",\r\n\t\"paisDesc\":\"Argentina\",\r\n\t\"proyectoId\": 3433,\r\n\t\"subproyectoId\": 3433,\r\n\t\"tareaId\": 3556,            \r\n\t\"proyectoDesc\": \"Sistemas\",\r\n\t\"subproyectoDesc\": \"ERP\",\r\n\t\"tareaDesc\": \"Instalaciones\",\r\n\t\"gastosFecha\": 1493510400000,\r\n\t\"importe\": 24000,\r\n\t\"moneda\": \"USD\",\r\n\t\"monedaFuncional\": \"PES\",\r\n\t\"tipoCambio\": 15.4,\r\n\t\"tipoCambioFecha\": 1493510400000,\r\n\t\"userId\": 3455,\r\n\t\"creacionFecha\": 1493510400000,\r\n\t\"imageId\": 12342,\r\n\t\"pathImageId\": \"ec2-user@ec2-54-186-226-131.us-west-2.compute.amazonaws.com/tickets/factura\",\r\n\t\"lineDesc\": null\r\n}"
 				},
 				"description": ""
 			},
@@ -57,7 +57,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "Desert.jpg"
+							"src": "antonio-restaurant.jpg"
 						}
 					]
 				},
