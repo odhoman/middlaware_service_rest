@@ -3,25 +3,37 @@ package com.anibal.educational.rest_service.comps.service.impl;
 import java.io.File;
 import java.io.InputStream;
 
-import com.anibal.educational.rest_service.comps.dao.file_managing.impl.FileSystemFileManagingDao;
 import com.anibal.educational.rest_service.comps.service.FileManagingException;
 import com.anibal.educational.rest_service.comps.service.FileManagingService;
 import com.anibal.educational.rest_service.comps.service.TicketUserAuteticationException;
 import com.anibal.educational.rest_service.comps.service.TicketUserException;
 import com.anibal.educational.rest_service.comps.service.TicketUserService;
+import com.anibal.educational.rest_service.comps.service.mail.MailContent;
+import com.anibal.educational.rest_service.comps.service.mail.MailService;
+import com.anibal.educational.rest_service.comps.service.mail.MailServiceImpl;
 import com.anibal.educational.rest_service.comps.util.RestServiceConstant;
+import com.anibal.educational.rest_service.comps.util.RestServiceUtil;
 import com.anibal.educational.rest_service.domain.TicketUser;
+import com.odhoman.api.utilities.config.AbstractConfig;
 import com.odhoman.api.utilities.dao.AbstractAbmDAO;
 import com.odhoman.api.utilities.dao.DAOException;
 import com.odhoman.api.utilities.dao.ItemNotFoundException;
 
-public class TicketUserServiceImplImpl extends AbstractService implements TicketUserService {
+public class TicketUserServiceImpl extends AbstractService implements TicketUserService {
 
-	private AbstractAbmDAO<TicketUser, TicketUser> dao = null;
-
-	public TicketUserServiceImplImpl(AbstractAbmDAO<TicketUser, TicketUser> dao) {
+	private AbstractAbmDAO<TicketUser, TicketUser> dao;
+	private FileManagingService fileService;
+	
+	public TicketUserServiceImpl(AbstractAbmDAO<TicketUser, TicketUser> dao, FileManagingService fileService) {
 		super();
 		this.dao = dao;
+		this.fileService = fileService;
+	}
+
+	public TicketUserServiceImpl(AbstractAbmDAO<TicketUser, TicketUser> dao, FileManagingService fileService, AbstractConfig config) {
+		super(config);
+		this.dao = dao;
+		this.fileService = fileService;
 	}
 
 	public TicketUser getUser(Long userId) throws TicketUserException {
@@ -103,10 +115,8 @@ public class TicketUserServiceImplImpl extends AbstractService implements Ticket
 
 		logger.debug("TicketUserServiceImplImpl - se guarda la imagen " + fileName + " del usuario id " + userId);
 
-		FileManagingService servie = new FileManagingServiceImpl(new FileSystemFileManagingDao());
-
 		try {
-			servie.handleUpload(inputStream, folderPath, fileName);
+			fileService.handleUpload(inputStream, folderPath, fileName);
 		} catch (FileManagingException e) {
 			logger.error("TicketUserServiceImplImpl - no se pudo  guarda la imagen " + fileName + " del usuario id "
 					+ userId);
@@ -127,14 +137,13 @@ public class TicketUserServiceImplImpl extends AbstractService implements Ticket
 	public File getUserImage(Long userId) throws TicketUserException {
 
 		logger.debug("TicketUserServiceImplImpl - getUserImage: iniciando");
-		FileManagingService servie = new FileManagingServiceImpl(new FileSystemFileManagingDao());
 		File file = null;
 
 		TicketUser user = getUser(userId);
 		
 		try {
 			
-			file = servie.handleDownload(user.getPathImage());
+			file = fileService.handleDownload(user.getPathImage());
 			if (file == null || !file.exists()) {
 				logger.error("No existe la imagen solicitada en el path " + user.getPathImage());
 				throw new TicketUserException("No existe la imagen solicitada");
@@ -184,6 +193,37 @@ public class TicketUserServiceImplImpl extends AbstractService implements Ticket
 		user.setUserPassword(null);
 		
 		return user;
+	}
+
+	public void performForgotPass(String userName) throws TicketUserException {
+		
+		TicketUser user;
+		MailContent mc;
+		
+		TicketUser filter = new TicketUser();
+		filter.setUserName(userName);
+		try {
+			user = dao.getItem(filter); 
+		} catch (ItemNotFoundException e) {
+			logger.warn("TicketUserServiceImplImpl - performForgotPass: No existe el usuario "+userName,e);
+			throw new TicketUserAuteticationException("No existe el usuario "+userName);
+		} catch (DAOException e) {
+			logger.error("TicketUserServiceImplImpl - performForgotPass: ocurrio un error al querer buscar el usuario "+userName, e);
+			throw new TicketUserException(e);
+		}
+		
+		mc = new MailContent(
+				config.getProperty(RestServiceConstant.APP_EMAIL_MESSAGE_SUBJECT), 
+				config.getProperty(RestServiceConstant.APP_EMAIL_MESSAGE_BODY) + user.getUserPassword(), 
+				user.getUserEmail(), config.getProperty(RestServiceConstant.APP_EMAIL_SMTP_FROM));
+		MailService ms = new MailServiceImpl();
+		
+		try {
+			ms.sendMail(mc, RestServiceUtil.createConfiguratorSmtpMailing(config));
+		} catch (Exception e) {
+			throw new TicketUserException(e);
+		}
+		
 	}
 
 

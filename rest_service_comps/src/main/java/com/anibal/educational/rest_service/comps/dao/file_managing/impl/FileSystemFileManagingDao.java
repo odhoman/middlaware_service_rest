@@ -8,9 +8,14 @@ import java.io.OutputStream;
 
 import com.anibal.educational.rest_service.comps.dao.file_managing.AbstractFileManagingDao;
 import com.anibal.educational.rest_service.comps.dao.file_managing.FileManagingDaoException;
+import com.odhoman.api.utilities.config.AbstractConfig;
 
 public class FileSystemFileManagingDao extends AbstractFileManagingDao {
 
+	public FileSystemFileManagingDao(AbstractConfig config) {
+		super(config);
+	}
+	
 	@Override
 	public void handleUpload(InputStream inputStream, String path ,String fileName) throws FileManagingDaoException {
 
@@ -44,14 +49,14 @@ public class FileSystemFileManagingDao extends AbstractFileManagingDao {
 				try {
 					inputStream.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+					logger.error("Ocurrio un error al querer cerrar el inputStream ",e);
 				}
 			}
 			if (outputStream != null) {
 				try {
 					outputStream.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+					logger.error("Ocurrio un error al querer cerrar el outputStream ",e);
 				}
 			}
 		}

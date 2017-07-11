@@ -1,15 +1,8 @@
 package com.anibal.educational.rest_service.test.controllers;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -17,13 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-
-import com.anibal.educational.rest_service.domain.CabeceraGasto;
-import com.anibal.educational.rest_service.domain.DetalleGasto;
-import com.anibal.educational.rest_service.domain.Message;
 
 /**
  * Test del controlador de los servicios REST de aplicacion educativa
@@ -58,12 +44,12 @@ public class RestServiceControllerTestExecutor {
 		System.out.println("\n" + RestServiceControllerTestExecutor.class.getName() + " Bajando el servicio.");
 	}
 
-	@Test
-	public void testUploadFile() {
-
-		RestTemplate restTemplate = new RestTemplate();
-		String urlTest = REST_SERVICE_URI + "/fileUpload";
-		MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
+//	@Test
+//	public void testUploadFile() {
+//
+//		RestTemplate restTemplate = new RestTemplate();
+//		String urlTest = REST_SERVICE_URI + "/fileUpload";
+//		MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
 //		final String filename = "somefile.txt";
 //		map.add("name", filename);
 //		map.add("filename", filename);
@@ -74,11 +60,11 @@ public class RestServiceControllerTestExecutor {
 //		// return filename;
 //		// }
 //		// };
-		map.add("file", "Ejemplo".getBytes());
-		 String result = restTemplate.postForObject(urlTest, map,	 String.class);
-		 
-		 System.out.println(result);
-	}
+//		map.add("file", "Ejemplo".getBytes());
+//		 String result = restTemplate.postForObject(urlTest, map,	 String.class);
+//		 
+//		 System.out.println(result);
+//	}
 
 //	@Test /* POST */
 //	public void m1createGastoCabecera1() {

@@ -21,4 +21,11 @@ public interface TicketLineService {
 	public File getLineImage(Long lineId) throws TicketLineServiceException;
 	
 	public void createLineImage(Long lineId, InputStream inputStream, String fileName) throws TicketLineServiceException;
+	
+	public void processLabelDesc(TicketLine line) throws TicketLineServiceException;
+	
+	public void processAllLabelDesc() throws TicketLineServiceException;
+	
+	public void notifyLineDescReady(Long lineId,TicketLine line, boolean mustBeLineDesc) throws TicketLineServiceException;
+	
 }

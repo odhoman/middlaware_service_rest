@@ -38,7 +38,18 @@ public class TicketLine implements Cloneable {
 	private Long imageId;
 	private String PathImageId;
 	private String lineDesc;
+	private Long lineStateId;
+
 	
+	
+	public TicketLine() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public TicketLine(Long lineStateId) {
+		super();
+		this.lineStateId = lineStateId;
+	}
 	/**
 	 * @return the lineId
 	 */
@@ -351,6 +362,14 @@ public class TicketLine implements Cloneable {
 		this.proveedorDesc = proveedorDesc;
 	}
 
+	public Long getLineStateId() {
+		return lineStateId;
+	}
+	public void setLineStateId(Long lineStateId) {
+		this.lineStateId = lineStateId;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "TicketLine [lineId=" + lineId + ", ticketId=" + ticketId + ", tipoGasto=" + tipoGasto + ", proveedorId="
@@ -361,9 +380,8 @@ public class TicketLine implements Cloneable {
 				+ ", importe=" + importe + ", moneda=" + moneda + ", monedaFuncional=" + monedaFuncional
 				+ ", tipoCambio=" + tipoCambio + ", tipoCambioFecha=" + tipoCambioFecha + ", userId=" + userId
 				+ ", creacionFecha=" + creacionFecha + ", imageId=" + imageId + ", PathImageId=" + PathImageId
-				+ ", lineDesc=" + lineDesc + "]";
+				+ ", lineDesc=" + lineDesc + ", lineStateId=" + lineStateId + "]";
 	}
-	
 	@Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();

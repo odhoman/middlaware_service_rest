@@ -10,6 +10,7 @@ import com.anibal.educational.rest_service.comps.util.DbUtil;
 import com.anibal.educational.rest_service.domain.TicketLine;
 import com.odhoman.api.utilities.config.AbstractConfig;
 import com.odhoman.api.utilities.db.DatabaseConnection;
+import com.odhoman.api.utilities.transac.ApplicationErrorException;
 
 public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketLine> {
 
@@ -32,7 +33,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		return Arrays.asList("LINE_ID", "TICKET_ID", "TIPO_GASTO", "PROVEEDOR_ID", "PROVEEDOR_DESC", "CIUDAD_ID", "PAIS_ID",
 				"CIUDAD_DESC", "PAIS_DESC", "PROYECTO_ID", "SUBPROYECTO_ID", "TAREA_ID", "PROYECTO_DESC",
 				"SUBPROYECTO_DESC", "TAREA_DESC", "GASTOS_FECHA", "IMPORTE", "MONEDA", "MONEDA_FUNCIONAL",
-				"TIPO_CAMBIO", "TIPO_CAMBIO_FECHA", "USER_ID", "CREACION_FECHA", "IMAGE_ID", "PATH_IMAGE_ID","LINE_DESC");
+				"TIPO_CAMBIO", "TIPO_CAMBIO_FECHA", "USER_ID", "CREACION_FECHA", "IMAGE_ID", "PATH_IMAGE_ID","LINE_DESC","LINE_STATE_ID");
 	}
 
 	@Override
@@ -69,6 +70,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(item.getImageId());
 		fields.add(item.getPathImage());
 		fields.add(item.getLineDesc());
+		fields.add(item.getLineStateId());
 		
 
 		fillInsertSelectListParameter(1, fields, ps);
@@ -180,6 +182,10 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 			fieldsUpdate.add("LINE_DESC");
 		}
 		
+		if (item.getLineStateId()!= null) {
+			fieldsUpdate.add("LINE_STATE_ID");
+		}
+		
 		return fieldsUpdate;
 	}
 
@@ -225,6 +231,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(item.getImageId());
 		fields.add(item.getPathImage());
 		fields.add(item.getLineDesc());
+		fields.add(item.getLineStateId());
 
 		// Valores de Condiciones/Filtro
 		fields.add(filter.getLineId());
@@ -238,12 +245,52 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		return Arrays.asList("LINE_ID", "TICKET_ID", "TIPO_GASTO", "PROVEEDOR_ID", "PROVEEDOR_DESC", "CIUDAD_ID", "PAIS_ID",
 				"CIUDAD_DESC", "PAIS_DESC", "PROYECTO_ID", "SUBPROYECTO_ID", "TAREA_ID", "PROYECTO_DESC",
 				"SUBPROYECTO_DESC", "TAREA_DESC", "GASTOS_FECHA", "IMPORTE", "MONEDA", "MONEDA_FUNCIONAL",
-				"TIPO_CAMBIO", "TIPO_CAMBIO_FECHA", "USER_ID", "CREACION_FECHA", "IMAGE_ID", "PATH_IMAGE_ID","LINE_DESC");
+				"TIPO_CAMBIO", "TIPO_CAMBIO_FECHA", "USER_ID", "CREACION_FECHA", "IMAGE_ID", "PATH_IMAGE_ID","LINE_DESC","LINE_STATE_ID");
 	}
 
 	@Override
 	protected List<String> getSelectTables() {
 		return Arrays.asList("AC_TKT_LINES_ALL");
+	}
+	
+	@Override
+	protected String getSelectConditions(List<TicketLine> filters) {
+		
+		List<String> fieldsSelectConditions = new ArrayList<String>();
+		
+		if(filters == null || filters.isEmpty())
+			throw new ApplicationErrorException("Debe ingresar algun filtro para la consulta");
+
+		for(TicketLine filter :filters){
+			
+			if (filter.getLineStateId()!= null) {
+				fieldsSelectConditions.add("LINE_STATE_ID");
+			}
+			
+		}
+		
+		return appendFieldsOr(fieldsSelectConditions);
+		
+	}
+	
+	@Override
+	protected void fillSelectParameters(List<TicketLine> filters, PreparedStatement ps, DatabaseConnection db) throws Exception {
+		int sequenceNumber = 0;
+		List<Object> fields = new ArrayList<Object>();
+
+		sequenceNumber++;
+		
+		if(filters == null || filters.isEmpty())
+			throw new ApplicationErrorException("Debe ingresar algun filtro para la consulta");
+
+		for(TicketLine filter :filters){
+			
+			if (filter.getLineStateId()!= null) {
+				fields.add(filter.getLineStateId());
+			}
+		}
+
+		fillSelectListParameter(sequenceNumber, fields, ps);
 	}
 
 	@Override
@@ -355,6 +402,10 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 			fieldsSelectConditions.add("LINE_DESC");
 		}
 		
+		if (filter.getLineStateId()!= null) {
+			fieldsSelectConditions.add("LINE_STATE_ID");
+		}
+		
 		return appendFields(fieldsSelectConditions);
 	}
 
@@ -392,6 +443,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		fields.add(filter.getImageId());
 		fields.add(filter.getPathImage());
 		fields.add(filter.getLineDesc());
+		fields.add(filter.getLineStateId());
 
 		fillSelectListParameter(sequenceNumber, fields, ps);
 		
@@ -427,6 +479,7 @@ public class TicketLineDao extends RestServiceAbstractAbmDAO<TicketLine, TicketL
 		tl.setImageId(getValueOrNull(rs.getLong("IMAGE_ID"),rs));
 		tl.setPathImage(rs.getString("PATH_IMAGE_ID"));
 		tl.setLineDesc(rs.getString("LINE_DESC"));
+		tl.setLineStateId(getValueOrNull(rs.getLong("LINE_STATE_ID"),rs));
 		
 		return tl;
 	}

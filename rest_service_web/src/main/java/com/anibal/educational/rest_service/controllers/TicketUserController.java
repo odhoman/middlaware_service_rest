@@ -262,5 +262,24 @@ public class TicketUserController extends AbstractRestService {
 		return new ResponseEntity<TicketUser>(tu, HttpStatus.OK);
 
 	}
+	
+	@RequestMapping(value = "/performForgotPass", method = RequestMethod.POST)
+	public ResponseEntity<?> performForgotPass(@RequestBody UserCredential user) {
+
+		logger.debug("TicketUserController - performForgotPass: Iniciando...");
+
+		try {
+			ticketUserService.performForgotPass(user.getUser());
+		} catch (TicketUserException e) {
+			logger.error("TicketUserController - createGasto: No se pudo crear el TicketUser...", e);
+			return new ResponseEntity<Message>(new Message(1, "No se pudo realizar la accion"),
+					HttpStatus.BAD_REQUEST);
+		}
+
+		logger.debug("TicketUserController - performForgotPass: Finalizado ");
+
+		return new ResponseEntity<TicketUser>(HttpStatus.OK);
+
+	}
 
 }

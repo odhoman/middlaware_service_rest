@@ -7,6 +7,7 @@ import com.anibal.educational.rest_service.comps.dao.file_managing.AbstractFileM
 import com.anibal.educational.rest_service.comps.dao.file_managing.FileManagingDaoException;
 import com.anibal.educational.rest_service.comps.service.FileManagingException;
 import com.anibal.educational.rest_service.comps.service.FileManagingService;
+import com.odhoman.api.utilities.config.AbstractConfig;
 
 public class FileManagingServiceImpl extends AbstractService implements FileManagingService{
 	
@@ -14,6 +15,11 @@ public class FileManagingServiceImpl extends AbstractService implements FileMana
 	
 	public FileManagingServiceImpl(AbstractFileManagingDao dao) {
 		super();
+		this.dao = dao;
+	}
+	
+	public FileManagingServiceImpl(AbstractFileManagingDao dao, AbstractConfig config) {
+		super(config);
 		this.dao = dao;
 	}
 

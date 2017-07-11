@@ -11,6 +11,7 @@ import com.anibal.educational.rest_service.comps.dao.TicketDistributionDao;
 import com.anibal.educational.rest_service.comps.dao.TicketHeaderDao;
 import com.anibal.educational.rest_service.comps.dao.TicketLineDao;
 import com.anibal.educational.rest_service.comps.dao.TicketUserDao;
+import com.anibal.educational.rest_service.comps.dao.file_managing.AbstractFileManagingDao;
 import com.anibal.educational.rest_service.comps.dao.file_managing.impl.FileSystemFileManagingDao;
 import com.anibal.educational.rest_service.comps.service.CabeceraGastoService;
 import com.anibal.educational.rest_service.comps.service.DetalleGastoService;
@@ -19,6 +20,8 @@ import com.anibal.educational.rest_service.comps.service.ServiceRestData;
 import com.anibal.educational.rest_service.comps.service.TicketDistributionService;
 import com.anibal.educational.rest_service.comps.service.TicketHeaderService;
 import com.anibal.educational.rest_service.comps.service.TicketLineService;
+import com.anibal.educational.rest_service.comps.service.TicketOCRService;
+import com.anibal.educational.rest_service.comps.service.TicketPushNotificationService;
 import com.anibal.educational.rest_service.comps.service.TicketUserService;
 import com.anibal.educational.rest_service.comps.service.impl.CabeceraGastoServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.DetalleGastoServiceImpl;
@@ -27,7 +30,9 @@ import com.anibal.educational.rest_service.comps.service.impl.ServiceRestDataImp
 import com.anibal.educational.rest_service.comps.service.impl.TicketDistributionServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.TicketHeaderServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.TicketLineServiceImpl;
-import com.anibal.educational.rest_service.comps.service.impl.TicketUserServiceImplImpl;
+import com.anibal.educational.rest_service.comps.service.impl.TicketOCRServiceImpl;
+import com.anibal.educational.rest_service.comps.service.impl.TicketPushNotificationServiceImpl;
+import com.anibal.educational.rest_service.comps.service.impl.TicketUserServiceImpl;
 import com.odhoman.api.utilities.config.AbstractConfig;
 
 @Configuration
@@ -63,25 +68,40 @@ public class RestServiceContextConfigurator {
 		return new TicketHeaderServiceImpl(new TicketHeaderDao());
 	}
 	
+	@Bean 
+	public FileManagingService getFileManagingService(){
+		return new FileManagingServiceImpl(getAbstractFileManagingDao(),getAbstractConfig());
+	}
+	
+	@Bean
+	public AbstractFileManagingDao getAbstractFileManagingDao(){
+		return new FileSystemFileManagingDao(getAbstractConfig());
+	}
 	
 	@Bean
 	public TicketUserService getTicketUserService(){
-		return new TicketUserServiceImplImpl(new TicketUserDao());
+		return new TicketUserServiceImpl(new TicketUserDao(),getFileManagingService());
 	}
 	
 	@Bean
 	public TicketLineService getTicketLineService(){
-		return new TicketLineServiceImpl(new TicketLineDao());
+		return new TicketLineServiceImpl(new TicketLineDao(),getTicketOCRService(),getFileManagingService(), getTicketPushNotificationService());
 	}
 	
 	@Bean
-	public FileManagingService getFileManagingService(){
-		return new FileManagingServiceImpl(new FileSystemFileManagingDao());
+	public TicketOCRService getTicketOCRService(){
+		return new TicketOCRServiceImpl(getAbstractConfig());
+	}
+	
+	@Bean
+	public TicketPushNotificationService getTicketPushNotificationService(){
+		return new TicketPushNotificationServiceImpl(getAbstractConfig());
 	}
 	
 	@Bean
 	public TicketDistributionService getTicketDistributionService(){
 		return new TicketDistributionServiceImpl(new TicketDistributionDao());
 	}
+	
 }
 

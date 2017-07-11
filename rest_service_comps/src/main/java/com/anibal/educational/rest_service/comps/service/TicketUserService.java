@@ -21,4 +21,6 @@ public interface TicketUserService{
 	
 	public TicketUser performAuthentication(String userName, String pass) throws TicketUserException;
 	
+	public void performForgotPass(String userNuame) throws TicketUserException;
+	
 }
