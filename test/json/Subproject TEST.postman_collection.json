@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Subproject TEST",
+		"_postman_id": "4a0b5f8d-eecd-94a7-8376-9440612401f3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createSubproject 4000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/createSubproject",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n\t\"subprojectId\": 4000,\r\n\t\"subprojectName\": \"Proyecto Prueba\",\r\n\t\"userId\": 40,\r\n\t\"creacionFecha\": 1493510400000\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getProjectByUserId 40",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/getSubprojectByUserId/40",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "updateSubproject 4000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/updateSubproject/4000",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"subprojectId\": 4000,\r\n\t\"subprojectName\": \"Subroyecto Prueba Cambiado\",\r\n\t\"userId\": 100,\r\n\t\"creacionFecha\": 149351043232323\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deleteSubproject 4000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/deleteSubproject/4000",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Project TEST",
+		"_postman_id": "bbd61720-f395-7c6a-2db6-d7c4e1bbcb9f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createProject 3000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/createProject",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"projectId\": 3000,\r\n\t\"projectName\": \"Proyecto Prueba\",\r\n\t\"userId\": 20,\r\n\t\"creacionFecha\": 1493510400000\r\n}\r\n\t"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getProjectByUserId 20",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/getProjectByUserId/20",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "updateProject 3000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/updateProject/3000",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"projectId\": 3000,\r\n\t\"projectName\": \"Proyecto Prueba Cambiado\",\r\n\t\"userId\": 80,\r\n\t\"creacionFecha\": 149351043232323\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProject 3000",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/deleteProject/3000",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

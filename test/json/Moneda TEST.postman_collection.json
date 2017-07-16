@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Moneda TEST",
+		"_postman_id": "64ac8b51-af2c-2e90-cf2b-5c09ffb55b9d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getMonedaById 1",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/getMonedaById/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "updateMoneda 1",
+			"request": {
+				"url": "http://ec2-52-36-103-126.us-west-2.compute.amazonaws.com:8080/updateMoneda/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"tipoCambio\": 107.4\r\n\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
