@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import com.anibal.educational.rest_service.comps.config.RestServiceConfig;
 import com.anibal.educational.rest_service.comps.dao.CabeceraGastoDao;
 import com.anibal.educational.rest_service.comps.dao.DetalleGastoDao;
+import com.anibal.educational.rest_service.comps.dao.MonedaDao;
+import com.anibal.educational.rest_service.comps.dao.ProjectDao;
+import com.anibal.educational.rest_service.comps.dao.SubprojectDao;
 import com.anibal.educational.rest_service.comps.dao.TicketDistributionDao;
 import com.anibal.educational.rest_service.comps.dao.TicketHeaderDao;
 import com.anibal.educational.rest_service.comps.dao.TicketLineDao;
@@ -16,7 +19,10 @@ import com.anibal.educational.rest_service.comps.dao.file_managing.impl.FileSyst
 import com.anibal.educational.rest_service.comps.service.CabeceraGastoService;
 import com.anibal.educational.rest_service.comps.service.DetalleGastoService;
 import com.anibal.educational.rest_service.comps.service.FileManagingService;
+import com.anibal.educational.rest_service.comps.service.MonedaService;
+import com.anibal.educational.rest_service.comps.service.ProjectService;
 import com.anibal.educational.rest_service.comps.service.ServiceRestData;
+import com.anibal.educational.rest_service.comps.service.SubprojectService;
 import com.anibal.educational.rest_service.comps.service.TicketDistributionService;
 import com.anibal.educational.rest_service.comps.service.TicketHeaderService;
 import com.anibal.educational.rest_service.comps.service.TicketLineService;
@@ -26,7 +32,10 @@ import com.anibal.educational.rest_service.comps.service.TicketUserService;
 import com.anibal.educational.rest_service.comps.service.impl.CabeceraGastoServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.DetalleGastoServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.FileManagingServiceImpl;
+import com.anibal.educational.rest_service.comps.service.impl.MonedaServiceImpl;
+import com.anibal.educational.rest_service.comps.service.impl.ProjectServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.ServiceRestDataImpl;
+import com.anibal.educational.rest_service.comps.service.impl.SubprojectServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.TicketDistributionServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.TicketHeaderServiceImpl;
 import com.anibal.educational.rest_service.comps.service.impl.TicketLineServiceImpl;
@@ -101,6 +110,21 @@ public class RestServiceContextConfigurator {
 	@Bean
 	public TicketDistributionService getTicketDistributionService(){
 		return new TicketDistributionServiceImpl(new TicketDistributionDao());
+	}
+	
+	@Bean
+	public MonedaService getMonedaService(){
+		return new MonedaServiceImpl(new MonedaDao());
+	}
+	
+	@Bean
+	public ProjectService getProjectService(){
+		return new ProjectServiceImpl(new ProjectDao());
+	}
+	
+	@Bean
+	public SubprojectService getSubprojectService(){
+		return new SubprojectServiceImpl(new SubprojectDao());
 	}
 	
 }

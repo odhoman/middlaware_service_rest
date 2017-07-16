@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import com.anibal.educational.rest_service.comps.dao.CabeceraGastoDao;
 import com.anibal.educational.rest_service.comps.dao.DetalleGastoDao;
+import com.anibal.educational.rest_service.comps.dao.MonedaDao;
+import com.anibal.educational.rest_service.comps.dao.ProjectDao;
+import com.anibal.educational.rest_service.comps.dao.SubprojectDao;
 import com.anibal.educational.rest_service.comps.dao.TicketDistributionDao;
 import com.anibal.educational.rest_service.comps.dao.TicketHeaderDao;
 import com.anibal.educational.rest_service.comps.dao.TicketLineDao;
@@ -113,6 +116,21 @@ public class AppConfigTest {
 	@Bean
 	public TicketLineService getTicketLineService(){
 		return new TicketLineServiceImplTest(getTicketLineDao(), getTicketOCRService(), getFileManagingService(), getTicketPushNotificationService(), getAbstractConfig());
+	}
+	
+	@Bean
+	public MonedaDao getMonedaDao(){
+		return new MonedaDaoImpl(getAbstractConfig());
+	}
+	
+	@Bean
+	public ProjectDao getProjectDao(){
+		return new ProjectDaoImpl(getAbstractConfig());
+	}
+
+	@Bean
+	public SubprojectDao getSubprojectDao(){
+		return new SubprojectDaoImpl(getAbstractConfig());
 	}
 	 
 	public class TicketPushNotificationServiceTestImpl extends TicketPushNotificationServiceImpl{
@@ -410,6 +428,72 @@ public class AppConfigTest {
 			return dbc;
 		}
 	}
+	
+	public class MonedaDaoImpl extends MonedaDao{
+		
+		public MonedaDaoImpl() {
+			super();
+		}
+
+		public MonedaDaoImpl(AbstractConfig config) {
+			super(config);
+		}
+		
+		@Override
+		protected DatabaseConnection getDatabaseConnection() {
+			DatabaseConnection dbc = new DatabaseConnection();
+			try {
+				dbc.setConfigure(new TstConfig());
+			} catch (Exception e) {
+				throw new ApplicationErrorException("No se pudo configurar el DBC de prueba");
+			}
+			return dbc;
+		}
+	}
+	
+	public class ProjectDaoImpl extends ProjectDao{
+		
+		public ProjectDaoImpl() {
+			super();
+		}
+
+		public ProjectDaoImpl(AbstractConfig config) {
+			super(config);
+		}
+		
+		@Override
+		protected DatabaseConnection getDatabaseConnection() {
+			DatabaseConnection dbc = new DatabaseConnection();
+			try {
+				dbc.setConfigure(new TstConfig());
+			} catch (Exception e) {
+				throw new ApplicationErrorException("No se pudo configurar el DBC de prueba");
+			}
+			return dbc;
+		}
+	}
+	
+	public class SubprojectDaoImpl extends SubprojectDao{
+		
+		public SubprojectDaoImpl() {
+			super();
+		}
+
+		public SubprojectDaoImpl(AbstractConfig config) {
+			super(config);
+		}
+		
+		@Override
+		protected DatabaseConnection getDatabaseConnection() {
+			DatabaseConnection dbc = new DatabaseConnection();
+			try {
+				dbc.setConfigure(new TstConfig());
+			} catch (Exception e) {
+				throw new ApplicationErrorException("No se pudo configurar el DBC de prueba");
+			}
+			return dbc;
+		}
+	}	
 	
 	public class TstConfig extends AbstractConfig {
 
