@@ -40,6 +40,9 @@ public class LinesProcessorBatch {
 			logger.error("LinesProcessorBatch: performProcessLines: Hubo un error al querer procesar las lines...",e);
 			logger.error("LinesProcessorBatch: performProcessLines... Finalizando CON ERROR a las "+ dateFormat.format(new Date())+" en "+(new Date().getTime()-milis)+" ms...");
 		  	return;
+		} catch (Exception e) {
+			logger.error("LinesProcessorBatch: performProcessLines: Hubo un error al querer procesar las lines...",e);
+			logger.error("LinesProcessorBatch: performProcessLines... Finalizando CON ERROR a las "+ dateFormat.format(new Date())+" en "+(new Date().getTime()-milis)+" ms...");	
 		}
     	
     	logger.info("LinesProcessorBatch: performProcessLines... Finalizando Correctamente el envio de procesamiento de las lines a las "+ dateFormat.format(new Date())+" en "+(new Date().getTime()-milis)+" ms...");
